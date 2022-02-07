@@ -5,7 +5,7 @@ export default class NewItem extends Component {
   render() {
     return (
         <div id='newItem'>
-            <a>
+            <a href='/newStudent'>
                 <i class="fas fa-plus"></i>
             </a>
         </div>
