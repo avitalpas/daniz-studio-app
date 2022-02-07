@@ -1,0 +1,10 @@
+#topNavLogo{
+    width: 30%;
+    right: 0;
+    margin: 0;
+}
+
+#topNavLogo img{
+    max-height: 60px;
+    padding: 7px 25px;
+}
