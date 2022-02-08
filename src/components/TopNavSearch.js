@@ -8,7 +8,7 @@ export default class TopNavSearch extends Component {
 
         <div id='topNavSearchDiv'>
           <input placeholder='חיפוש'></input>
-          <a><i class="fas fa-search"></i></a>
+          <a><i className="fas fa-search"></i></a>
         </div>
 
       </div>

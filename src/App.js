@@ -5,7 +5,6 @@ import Students from './components/Students';
 import Music from './components/Music';
 import Calendar from './components/Calendar';
 import NewItem from './components/NewItem';
-import NewStudent from './components/NewStudent';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 
@@ -22,7 +21,6 @@ function App() {
           <Route exact path="/" element={<Calendar/>}/>
           <Route exact path="/calendar" element={<Calendar/>}/>
           <Route exact path="/students" element={<Students/>}/>
-          <Route exact path="/newStudent" element={<NewStudent/>}/>
           <Route exact path="/music" element={<Music/>}/>
 
 

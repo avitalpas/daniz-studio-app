@@ -5,7 +5,7 @@ import '../css/Global.css'
 export default class Music extends Component {
   render() {
     return (
-        <div id='music' class='bodyDiv'>
+        <div id='music' className='bodyDiv'>
           <h3>Music page</h3>
         </div>
       )

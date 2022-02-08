@@ -7,28 +7,28 @@ export default class TopNavButtons extends Component {
       <div id='topNavButtons'>
 
         {/* lessons */}
-        <div class='topNavButtonDiv'>
-          <a href='/calendar'><i class="fas fa-calendar-week"></i></a>
-          <span class='topNavLabel'>
-            <i class="fas fa-caret-up"></i>
+        <div className='topNavButtonDiv'>
+          <a href='/calendar'><i className="fas fa-calendar-week"></i></a>
+          <span className='topNavLabel'>
+            <i className="fas fa-caret-up"></i>
             <p>שיעורים</p>
           </span>
         </div>
 
         {/* student */}
-        <div class='topNavButtonDiv'>
-          <a href='students'><i class="fas fa-user"></i></a>
-          <span class='topNavLabel'>
-            <i class="fas fa-caret-up"></i>
+        <div className='topNavButtonDiv'>
+          <a href='students'><i className="fas fa-user"></i></a>
+          <span className='topNavLabel'>
+            <i className="fas fa-caret-up"></i>
             <p>תלמידים</p>
           </span>
         </div>
 
         {/* music */}
-        <div class='topNavButtonDiv'>
-          <a href='music'><i class="fas fa-music"></i></a>
-          <span class='topNavLabel'>
-            <i class="fas fa-caret-up"></i>
+        <div className='topNavButtonDiv'>
+          <a href='music'><i className="fas fa-music"></i></a>
+          <span className='topNavLabel'>
+            <i className="fas fa-caret-up"></i>
             <p>תכנים</p>
           </span>
         </div>

@@ -6,7 +6,7 @@ export default class NewItem extends Component {
     return (
         <div id='newItem'>
             <a href='/newStudent'>
-                <i class="fas fa-plus"></i>
+                <i className="fas fa-plus"></i>
             </a>
         </div>
     )

@@ -1,18 +1,25 @@
-const router = require('express').router
-let Lesosn = reuiqre('../models/lesson.model')
+const router = require('express').Router()
+let Lesson = require('../models/lesson.model')
 
 router.route('/').get((req, res) => {
-    Student.find()
-        .then(students => res.json(students))
+    Lesson.find()
+        .then(lessons => res.json(lessons))
         .catch(err => res.status(400).josn('Error: ' + err))
 })
 
-router.route('/addStudent').post((req,res)=>{
-    const name = req.body.name
-    const newStudent = new Student({name})
+router.route('/newLesson').post((req,res)=>{
+    const studentID = req.body.studentID
+    const description = req.body.description
+    const date = Date.parse(req.body.date)
 
-    newStudent.save()
-    .then(()=>res.json('Student added!'))
+    const newLesson = new Lesson({
+        studentID,
+        description,
+        date
+    })
+
+    newLesson.save()
+    .then(()=>res.json('Lesson added!'))
     .catch(err=>res.status(400).json('Error: + err'))
 })
 
