@@ -7,7 +7,7 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).josn('Error: ' + err))
 })
 
-router.route('/newLesson').post((req,res)=>{
+router.route('/new').post((req,res)=>{
     const studentID = req.body.studentID
     const description = req.body.description
     const date = Date.parse(req.body.date)

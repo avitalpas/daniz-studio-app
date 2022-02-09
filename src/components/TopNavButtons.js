@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/TopNavButtons.css'
+import { Link } from 'react-router-dom'
 
 export default class TopNavButtons extends Component {
   render() {
@@ -8,7 +9,7 @@ export default class TopNavButtons extends Component {
 
         {/* lessons */}
         <div className='topNavButtonDiv'>
-          <a href='/calendar'><i className="fas fa-calendar-week"></i></a>
+          <Link to='/lessons'><i className="fas fa-calendar-week"></i></Link>
           <span className='topNavLabel'>
             <i className="fas fa-caret-up"></i>
             <p>שיעורים</p>
@@ -17,7 +18,7 @@ export default class TopNavButtons extends Component {
 
         {/* student */}
         <div className='topNavButtonDiv'>
-          <a href='students'><i className="fas fa-user"></i></a>
+          <Link to='students'><i className="fas fa-user"></i></Link>
           <span className='topNavLabel'>
             <i className="fas fa-caret-up"></i>
             <p>תלמידים</p>
@@ -26,7 +27,7 @@ export default class TopNavButtons extends Component {
 
         {/* music */}
         <div className='topNavButtonDiv'>
-          <a href='music'><i className="fas fa-music"></i></a>
+          <Link to='music'><i className="fas fa-music"></i></Link>
           <span className='topNavLabel'>
             <i className="fas fa-caret-up"></i>
             <p>תכנים</p>

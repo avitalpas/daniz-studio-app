@@ -10,7 +10,7 @@ router.route('/').get((req, res) => {
 
 
 // post new student
-router.route('/newStudent').post((req, res) => {
+router.route('/new').post((req, res) => {
     const name = req.body.name
     const newStudent = new Student({ name })
 
