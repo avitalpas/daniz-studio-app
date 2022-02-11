@@ -1,0 +1,49 @@
+
+#topNavButtons{
+    padding-top: 17px;
+    text-align: center !important;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.topNavButtonDiv{    
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+
+    i{
+        font-size: 30px;
+        padding: 5px;
+        margin: 0 20px;
+    }
+
+    a{
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.698);
+        transition: 1s;
+        cursor: pointer;
+    }
+
+    a:hover{
+        color: black;
+    }
+
+    &::after{
+        content: attr(data-tooltip);
+        position: block;
+        top: 75px;
+        background-color: rgba(0, 0, 0, 0.698);
+        color: white;
+        padding: 3px 5px;
+        margin-top: 20px;
+        border-radius: 3px;
+        text-align: center;
+        transition: 200ms ease-in;
+        opacity: 0;
+    }
+
+    &:hover::after{
+        opacity: 1;
+    }
+}

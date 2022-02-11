@@ -1,0 +1,22 @@
+.actionLink{
+    display: inline;
+    padding: 3px 5px;
+    margin: 5px;
+
+    a{
+        text-decoration: none;
+    }
+
+    div{
+        width: 20px;
+    }
+
+    i{
+        color: black;
+        font-size: 17px;
+    }
+
+    .del-icon{
+        color: red;
+    }
+}

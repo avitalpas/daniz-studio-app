@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 
 const Lesson = props => (
   <tr>
-    <td>{props.lesson.studentID}</td>
+    <td>
+      { props.students.find( el => el._id.includes(props.lesson.studentID) ).name }
+    </td>
     <td>{props.lesson.description}</td>
     <td>{props.lesson.date.substring(0,10)}</td>
     <td>
@@ -21,18 +23,28 @@ export default class Lessons extends Component {
     super(props)
 
     this.deleteLesson = this.deleteLesson.bind(this)
+    this.lessonsList = this.lessonsList.bind(this)
 
     this.state = {
-      lessons: []
+      lessons: [],
+      students: []
     }
   }
 
+  // get lessons list - full students data
   componentDidMount() {
     axios.get('http://localhost:5000/lessons')
       .then(response => {
         this.setState({ lessons: response.data })
       })
       .catch(error => console.log(error))
+
+    axios.get('http://localhost:5000/students')
+      .then(response => {
+        this.setState({ students: response.data })
+      })
+      .catch(error => console.log(error))
+
   }
 
   deleteLesson(id) {
@@ -46,7 +58,7 @@ export default class Lessons extends Component {
 
   lessonsList(){
     return this.state.lessons.map(curLesson => {
-      return <Lesson lesson={curLesson} deleteLesson={this.deleteLesson} key={curLesson._id} />
+      return <Lesson lesson={curLesson} students={this.state.students} deleteLesson={this.deleteLesson} key={curLesson._id} />
     })
   }
 

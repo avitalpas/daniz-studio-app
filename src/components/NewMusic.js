@@ -4,7 +4,10 @@ import axios from 'axios';
 // import stylesheet
 import '../css/Global.css'
 
-export default class NewStudent extends Component {
+import React, { Component } from 'react';
+
+export default class NewMusic extends Component {
+
     constructor(props) {
         super(props)
 
@@ -15,7 +18,6 @@ export default class NewStudent extends Component {
             name: ''
         }
     }
-    
 
     onChangeName(e) {
         this.setState({
@@ -26,20 +28,21 @@ export default class NewStudent extends Component {
     onSubmit(e) {
         e.preventDefault()
 
-        const student = {
+        const music = {
             name: this.state.name
         }
 
-        console.log(student);
-        axios.post('http://localhost:5000/students/new', student)
+        console.log(music);
+        axios.post('http://localhost:5000/musics/new', music)
             .then(res => console.log(res.data))
 
-        window.location = '/students'
+        window.location = '/musics'
     }
+
 
     render() {
         return (
-            <div id="newStudent" className='bodyDiv'>
+            <div id="newMusic" className='bodyDiv'>
                 <form onSubmit={this.onSubmit} dir='rtl'>
 
                     {/* name */}
@@ -55,7 +58,7 @@ export default class NewStudent extends Component {
                     {/* submit */}
                     <div className="form-control">
                         <input type='submit'
-                            value='הוסף תלמיד חדש'
+                            value='הוסף'
                             className='submitBtn' />
                     </div>
 

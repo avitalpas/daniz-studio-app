@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 // import axios for server requests
 import axios from 'axios';
 
+// stylesheet
+import '../css/students.scss'
+
 // student component
 const Student = props => (
   <tr>
@@ -18,11 +21,18 @@ const Student = props => (
     <td>
 
       {/* edit student */}
-      <Link to={'/students/edit/' + props.student._id }>עריכה</Link>
-      |
+      <div className="actionLink">
+        <Link to={'/students/edit/' + props.student._id} title='עריכת תלמיד'>
+          <i class="far fa-edit"></i>
+        </Link>
+      </div>
 
       {/* delete student */}
-      <a href='#' onClick={()=>{props.deleteStudent(props.student._id)}}>מחיקה</a>
+      <div className="actionLink delIcon">
+        <a href='#' onClick={() => { props.deleteStudent(props.student._id) }} title='מחיקת תלמיד'>
+          <i class="fas fa-trash del-icon"></i>
+        </a>
+      </div>
     </td>
   </tr>
 )
@@ -31,7 +41,7 @@ const Student = props => (
 export default class Students extends Component {
 
   // props & state
-  constructor(props){
+  constructor(props) {
     super(props)
 
     // bond this to functions
@@ -54,7 +64,7 @@ export default class Students extends Component {
   }
 
   deleteStudent(id) {
-    axios.delete('http://localhost:5000/student/' + id)
+    axios.delete('http://localhost:5000/students/' + id)
       .then(res => console.log(res.data))
 
     this.setState({
@@ -62,7 +72,7 @@ export default class Students extends Component {
     })
   }
 
-  studentsList(){
+  studentsList() {
     return this.state.students.map(curStudent => {
       return <Student student={curStudent} deleteStudent={this.deleteStudent} key={curStudent._id} />
     })

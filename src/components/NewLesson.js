@@ -17,7 +17,7 @@ export default class NewLesson extends Component {
             studentID: '',
             description: '',
             date: new Date(),
-            lessons: []
+            students: []
         }
     }
 
@@ -27,8 +27,8 @@ export default class NewLesson extends Component {
         .then(response=>{
             if( response.data.length > 0){
                 this.setState({
-                    lessons:response.data.map(student => student.name),
-                    studentID: response.data[0]
+                    students: response.data,
+                    studentID: response.data[0].name
                 })
             }
         })
@@ -84,11 +84,8 @@ export default class NewLesson extends Component {
                             value={this.state.studentID}
                             onChange={this.onChangeStudentID}>
                             {
-                                this.state.lessons.map(function (lesson) {
-                                    return <option
-                                        key={lesson}
-                                        value={lesson}>{lesson}
-                                    </option>
+                                this.state.students.map(student => {
+                                    return  <option key={student._id} value={student._id}>{student.name}</option>
                                 })
                             }
                         </select>
