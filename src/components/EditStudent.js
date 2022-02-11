@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../css/Global.css'
+import '../css/Global.scss'
 
 export default class EditStudent extends Component {
     constructor(props) {

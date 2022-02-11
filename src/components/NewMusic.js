@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
-// import stylesheet
-import '../css/Global.css'
-
-import React, { Component } from 'react';
+import axios from 'axios'
 
 export default class NewMusic extends Component {
-
     constructor(props) {
         super(props)
 
@@ -42,25 +36,28 @@ export default class NewMusic extends Component {
 
     render() {
         return (
-            <div id="newMusic" className='bodyDiv'>
+            <div id="newMusic" className='bodyDiv form-float'>
+                <h3>הוספת יצירה חדשה</h3>
+                <hr/>
                 <form onSubmit={this.onSubmit} dir='rtl'>
 
+                    <p>הכנס פרטי יצירה:</p>
                     {/* name */}
                     <div className='form-group'>
-                        <label>שם:</label>
-
                         <input type='text'
                             className='form-control'
                             value={this.state.name}
-                            onChange={this.onChangeName} />
+                            onChange={this.onChangeName}
+                            placeholder='שם יצירה:'
+                         />
                     </div>
 
                     {/* submit */}
-                    <div className="form-control">
-                        <input type='submit'
+                    <button type='submit'
                             value='הוסף'
-                            className='submitBtn' />
-                    </div>
+                            className='submitBtn'>
+                            הוספת יצירה
+                    </button>
 
                 </form>
             </div>

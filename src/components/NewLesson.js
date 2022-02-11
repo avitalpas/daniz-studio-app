@@ -1,8 +1,16 @@
+// import react
 import React, { Component } from 'react';
-import DatePicker from 'react-datepicker'
+
+// import axios for db requests
 import axios from 'axios';
-import "react-datepicker/dist/react-datepicker.css"
-import '../css/Global.css'
+
+// import date picker
+// import DatePicker from 'react-datepicker'
+// import "react-datepicker/dist/react-datepicker.css"
+import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
+
+// import stylsheet
+import '../css/Global.scss'
 
 export default class NewLesson extends Component {
     constructor(props) {
@@ -22,33 +30,36 @@ export default class NewLesson extends Component {
     }
 
     componentDidMount() {
-        
+
         axios.get('http://localhost:5000/students')
-        .then(response=>{
-            if( response.data.length > 0){
-                this.setState({
-                    students: response.data,
-                    studentID: response.data[0].name
-                })
-            }
-        })
+            .then(response => {
+                if (response.data.length > 0) {
+                    this.setState({
+                        students: response.data,
+                        studentID: response.data[0].name
+                    })
+                }
+            })
     }
 
     onChangeStudentID(e) {
+        console.log(e.target.value);
         this.setState({
             studentID: e.target.value
         })
     }
 
     onChangeDescription(e) {
+        console.log(e.target.value);
         this.setState({
             description: e.target.value
         })
     }
 
-    onChangeDate(e) {
+    onChangeDate(dateInput) {
+        console.log(dateInput.value);
         this.setState({
-            date: e.target.value
+            date: dateInput.value
         })
     }
 
@@ -63,29 +74,29 @@ export default class NewLesson extends Component {
 
         console.log(lesson);
         axios.post('http://localhost:5000/lessons/new', lesson)
-        .then(res=>console.log(res.data))
+            .then(res => console.log(res.data))
 
         window.location = '/lessons'
     }
 
     render() {
         return (
-            <div id="newLesson" className='bodyDiv'>
-
+            <div id="newLesson" className='bodyDiv form-float'>
+                <h3>הוספת שיעור חדש</h3>
+                <hr />
                 <form onSubmit={this.onSubmit} dir='rtl'>
 
+                    <p>הכנס פרטי שיעור:</p>
                     {/* select student */}
                     <div className="form-group">
-                        <label>תלמיד:</label>
-
                         <select ref='studentInput'
                             required
                             className='form-control'
-                            value={this.state.studentID}
                             onChange={this.onChangeStudentID}>
+                            <option selected disabled>בחר תלמיד</option>
                             {
                                 this.state.students.map(student => {
-                                    return  <option key={student._id} value={student._id}>{student.name}</option>
+                                    return <option key={student._id} value={student._id}>{student.name}</option>
                                 })
                             }
                         </select>
@@ -93,32 +104,32 @@ export default class NewLesson extends Component {
 
                     {/* description */}
                     <div className='form-group'>
-                        <label>תיאור:</label>
-
                         <input type='text'
                             className='form-control'
+                            placeholder='תיאור:'
                             value={this.state.description}
                             onChange={this.onChangeDescription} />
                     </div>
 
                     {/* date */}
-                    <div className="form-control">
-                        <label>תאריך:</label>
-                        
-                        <div>
-                            <DatePicker
-                                selected={this.state.date}
-                                onChange={this.onChangeDate}
-                            />
+                    <div className='form-control dateInput'>
+                        <p>מתי?</p>
+                        <div className="dateTimePicker">
+                            <DateTimePickerComponent onChange={this.onChangeDate}
+                                                     placeholder='בחר תאריך ושעה'
+                                                     format="dd/MM/yyyy HH:mm"
+                            ></DateTimePickerComponent>
                         </div>
                     </div>
 
+
                     {/* submit */}
-                    <div className="form-control">
-                        <input type='submit'
-                            value='Create lesson log'
-                            className='submitBtn'/>
-                    </div>
+                    <button type='submit'
+                        value='Create lesson log'
+                        className='submitBtn'>
+                        קבע שיעור
+                    </button>
+
                 </form>
 
             </div>

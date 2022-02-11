@@ -9,7 +9,7 @@ import axios from 'axios'
 
 // import stylesheets
 import '../css/Music.css'
-import '../css/Global.css'
+import '../css/Global.scss'
 
 // music component
 const Music = props => (

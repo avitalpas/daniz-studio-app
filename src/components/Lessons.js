@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../css/Global.css'
+import '../css/Global.scss'
 import { Link } from 'react-router-dom';
+import Lesson from './Lesson'
 
-const Lesson = props => (
-  <tr>
-    <td>
-      { props.students.find( el => el._id.includes(props.lesson.studentID) ).name }
-    </td>
-    <td>{props.lesson.description}</td>
-    <td>{props.lesson.date.substring(0,10)}</td>
-    <td>
-      <Link to={'/lessons/edit/'+ props.lesson._id}>עריכה</Link>
-      |
-      <a href='#'onClick={()=>{props.deleteLesson(props.lesson._id)}}>מחיקה</a>
-    </td>
-  </tr>
-)
+
 
 export default class Lessons extends Component {
   constructor(props) {
@@ -47,6 +35,7 @@ export default class Lessons extends Component {
 
   }
 
+  // delete student by ID
   deleteLesson(id) {
     axios.delete('http://localhost:5000/lessons/' + id)
       .then(res => console.log(res.data))
@@ -56,9 +45,13 @@ export default class Lessons extends Component {
     })
   }
 
-  lessonsList(){
+  lessonsList(){    
+
     return this.state.lessons.map(curLesson => {
-      return <Lesson lesson={curLesson} students={this.state.students} deleteLesson={this.deleteLesson} key={curLesson._id} />
+      return <Lesson lesson={curLesson} 
+                     deleteLesson={this.deleteLesson} 
+                     key={curLesson._id} 
+              />
     })
   }
 

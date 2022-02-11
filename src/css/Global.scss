@@ -1,0 +1,88 @@
+// import google fonts
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+// import date time styleshhet
+@import url('https://cdn.syncfusion.com/ej2/material.css');
+
+body{
+    font-family: 'Varela Round', sans-serif;
+}
+
+.bodyDiv{
+    margin-top: 120px !important;
+    text-align: center;
+}
+
+.form-float{
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.65);
+    padding: 20px;
+    border-radius: 2px;
+    justify-items: center;
+    animation: slide-in-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+    .form-control{
+        margin: auto;
+        margin-bottom: 10px;
+        max-width: 400px;
+    }
+
+    .dateInput{
+
+        display: flex;
+        max-width: 400px;
+        margin: auto;
+
+        .dateTimePicker{
+          width: 300px;
+          margin-right: 20px;
+        }
+    }
+
+    button{
+        border: 2px solid #4390c7;
+        color: #4390c7;
+        border-radius: 10px;
+        background: none;
+        padding: 5px 10px;
+        transition: .5s;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        &:hover{
+            background-color: #b8d9f1c9;
+        }
+    }
+}
+
+
+/**
+ * ----------------------------------------
+ * animation slide-in-right
+ * ----------------------------------------
+ */
+@-webkit-keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}

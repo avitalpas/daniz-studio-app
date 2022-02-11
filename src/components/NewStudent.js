@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 // import stylesheet
-import '../css/Global.css'
+import '../css/Global.scss'
 
 export default class NewStudent extends Component {
     constructor(props) {
@@ -39,25 +39,24 @@ export default class NewStudent extends Component {
 
     render() {
         return (
-            <div id="newStudent" className='bodyDiv'>
+            <div id="newStudent" className='bodyDiv form-float'>
+                <h3>הוספת תלמיד חדש</h3>
+                <hr/>
                 <form onSubmit={this.onSubmit} dir='rtl'>
+
+                    <p>הכנס פרטי תלמיד:</p>
 
                     {/* name */}
                     <div className='form-group'>
-                        <label>שם:</label>
-
                         <input type='text'
                             className='form-control'
+                            placeholder='שם:'
                             value={this.state.name}
                             onChange={this.onChangeName} />
                     </div>
 
                     {/* submit */}
-                    <div className="form-control">
-                        <input type='submit'
-                            value='הוסף תלמיד חדש'
-                            className='submitBtn' />
-                    </div>
+                    <button type='submit'>הוסף תלמיד</button>
 
                 </form>
             </div>

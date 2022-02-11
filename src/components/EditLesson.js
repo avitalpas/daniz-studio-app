@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/Global.css'
+import '../css/Global.scss'
 
 export default class EditLesson extends Component {
   render() {

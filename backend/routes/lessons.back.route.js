@@ -5,11 +5,11 @@ let Lesson = require('../models/lesson.model')
 router.route('/').get((req, res) => {
     Lesson.find()
         .then(lessons => res.json(lessons))
-        .catch(err => res.status(400).josn('Error: ' + err))
+        .catch(err => res.status(400).json('Error: ' + err))
 })
 
 // post new lesson
-router.route('/newLesson').post((req,res)=>{
+router.route('/new').post((req,res)=>{
     const studentID = req.body.studentID
     const description = req.body.description
     const date = Date.parse(req.body.date)

@@ -28,25 +28,25 @@ export default class NewItem extends Component {
 
           {/* new music */}
           <Link to='/musics/new' className='newLink'>
-            <i class="fas fa-music"></i>
+            <i className="fas fa-music"></i>
             <span>יצירה</span>
           </Link> 
           
           {/* new student */}
           <Link to='/students/new' className='newLink'>
-            <i class="fas fa-user-graduate"></i>
+            <i className="fas fa-user-graduate"></i>
             <span>תלמיד חדש</span>
           </Link> 
           
           {/* new lesson */}
           <Link to='/lessons/new' className='newLink'>
-            <i class="fas fa-play"></i>
+            <i className="fas fa-play"></i>
             <span>שיעור חדש</span>
           </Link> 
           
           {/* main new button */}
-          <button onClick={this.newBtnClick}>
-            <i class="fas fa-plus newIcon"></i>
+          <button>
+            <i className="fas fa-plus newIcon"></i>
           </button>
 
         </div>
