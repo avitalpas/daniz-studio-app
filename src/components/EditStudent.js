@@ -77,7 +77,7 @@ export default function EditStudent() {
     function getCustomFields() {
         return customFields.map(field => {
             return (
-                <EditCustomFieldData field={field} customFieldsData={customFieldsData} key={field._id}/>
+                <EditCustomFieldData field={field} customFieldsData={customFieldsData} studentID={student._id} key={field._id}/>
             )
         })
     }
