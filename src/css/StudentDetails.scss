@@ -1,0 +1,26 @@
+#student-details{
+    .action-links{
+        display: flex;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    
+        .actions-link{
+            margin: 10px;
+    
+            i{
+                color: black;
+                font-size: 23px;
+                box-shadow: 0 0 5px gray;
+                padding: 15px;
+                border-radius: 10px;
+                width: 70px;
+            }
+        }
+    }
+
+    #student-full-details{
+        text-align: right;
+        direction: rtl;
+    }
+}

@@ -9,17 +9,24 @@ export default class NewStudent extends Component {
         super(props)
 
         this.onChangeName = this.onChangeName.bind(this)
+        this.onChangeMobile = this.onChangeMobile.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
 
         this.state = {
-            name: ''
+            name: '',
+            mobile: ''
         }
     }
     
-
     onChangeName(e) {
         this.setState({
             name: e.target.value
+        })
+    }
+
+    onChangeMobile(e){
+        this.setState({
+            mobile: e.target.value
         })
     }
 
@@ -27,7 +34,8 @@ export default class NewStudent extends Component {
         e.preventDefault()
 
         const student = {
-            name: this.state.name
+            name: this.state.name,
+            mobile: this.state.mobile
         }
 
         console.log(student);
@@ -53,6 +61,15 @@ export default class NewStudent extends Component {
                             placeholder='שם:'
                             value={this.state.name}
                             onChange={this.onChangeName} />
+                    </div>
+
+                    {/* mobile */}
+                    <div className='form-group'>
+                        <input type='text'
+                            className='form-control'
+                            placeholder='פלאפון:'
+                            value={this.state.mobile}
+                            onChange={this.onChangeMobile} />
                     </div>
 
                     {/* submit */}

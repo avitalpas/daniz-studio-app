@@ -1,6 +1,7 @@
 #topNavSearch{
-    width: 30%;
+    width: 20%;
     padding: 17px 0;
+    margin-left: 45px;
 }
 
 #topNavSearchDiv{
@@ -9,7 +10,7 @@
     background-color: rgba(128, 128, 128, 0.103);
     border-radius: 15px;
     padding: 5px 10px;
-    margin-left: 20px;
+    margin-left: 30px;
     width: max-content;
 
 }
@@ -20,9 +21,16 @@
     background: none;
     padding: 5px 7px;
     margin-left: 10px;
+    width: 120px;
 }
 
 #topNavSearchDiv i{
     padding: 5px;
     font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    #topNavSearchDiv{
+        opacity: 0;
+    }
 }

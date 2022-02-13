@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class TopNavAccountButtons extends Component {
-  render() {
-    return <div></div>;
-  }
+export default function TopNavAccountButtons() {
+  return (
+    <div>
+      <a href="/settings">הגדרות</a>
+    </div>
+  )
 }

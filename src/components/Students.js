@@ -10,32 +10,8 @@ import axios from 'axios';
 // stylesheet
 import '../css/students.scss'
 
-// student component
-const Student = props => (
-  <tr>
+import Student from './Student'
 
-    {/* student name */}
-    <td>{props.student.name}</td>
-
-    {/* student actions */}
-    <td>
-
-      {/* edit student */}
-      <div className="actionLink">
-        <Link to={'/students/edit/' + props.student._id} title='עריכת תלמיד'>
-          <i class="far fa-edit"></i>
-        </Link>
-      </div>
-
-      {/* delete student */}
-      <div className="actionLink delIcon">
-        <a href='#' onClick={() => { props.deleteStudent(props.student._id) }} title='מחיקת תלמיד'>
-          <i class="fas fa-trash del-icon"></i>
-        </a>
-      </div>
-    </td>
-  </tr>
-)
 
 // students ( list ) component
 export default class Students extends Component {
@@ -74,7 +50,7 @@ export default class Students extends Component {
 
   studentsList() {
     return this.state.students.map(curStudent => {
-      return <Student student={curStudent} deleteStudent={this.deleteStudent} key={curStudent._id} />
+      return <Student student={curStudent} deleteStudent={this.deleteStudent} key={curStudent._id}/>
     })
   }
 
@@ -83,12 +59,8 @@ export default class Students extends Component {
     return (
       <div id='students' className='bodyDiv'>
         <h3>התלמידים שלי</h3>
+        <hr></hr>
         <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>שם</th>
-            </tr>
-          </thead>
           <tbody>
             {this.studentsList()}
           </tbody>

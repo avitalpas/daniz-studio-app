@@ -12,7 +12,12 @@ router.route('/').get((req, res) => {
 // post new student
 router.route('/new').post((req, res) => {
     const name = req.body.name
-    const newStudent = new Student({ name })
+    const mobile = req.body.mobile
+
+    const newStudent = new Student({ 
+        name,
+        mobile
+     })
 
     newStudent.save()
         .then(() => res.json('Student added!'))
@@ -38,6 +43,7 @@ router.route('/update/:id').post((req, res) => {
     Student.findById(req.params.id)
         .then(student => {
             student.name = req.body.name
+            student.mobile = req.body.mobile
 
             student.save()
                 .then(() => res.json('Student updated!'))

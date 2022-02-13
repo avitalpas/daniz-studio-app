@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 
 export default class TopNavButtons extends Component {
+
+
   render() {
     return (
       <div id='topNavButtons'>

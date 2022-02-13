@@ -6,6 +6,15 @@
 
 body{
     font-family: 'Varela Round', sans-serif;
+    
+    h3{
+      font-size: 25px;
+      font-weight:600;
+    }
+
+    hr{
+      margin: 1px 0;
+    }
 }
 
 .bodyDiv{
@@ -84,5 +93,13 @@ body{
     -webkit-transform: translateX(0);
             transform: translateX(0);
     opacity: 1;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .bodyDiv{
+    margin-top: 90px !important;
+
   }
 }

@@ -1,0 +1,46 @@
+#settings{
+
+    .custom-fields{
+        margin-top: 40px;
+        text-align: right;
+
+        #new-field-form{
+            direction: rtl;
+
+            input,
+            select{
+                width: 150px;
+                margin-left: 20px;
+                height: 25px;
+            }
+
+            button{
+                border: 2px solid #4390c7;
+                color: #4390c7;
+                border-radius: 10px;
+                background: none;
+                padding: 3px 7px;
+                transition: .5s;
+                height: 33px;
+
+                &:hover{
+                    background-color: #b8d9f1c9;
+                }
+            }
+        }
+        
+
+        .custom-field{
+            display: flex;
+            direction: rtl;
+
+            .field-details{
+                margin-left: 50px;
+
+                span{
+                    margin: 0 15px
+                }
+            }
+        }
+    }
+}

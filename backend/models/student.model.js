@@ -6,6 +6,9 @@ const studentSchema = new Schema({
     name: {
         type: String,
         require: true
+    },
+    mobile: {
+        type: String
     }
 },{
     timestamps: true

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../css/Lesson.scss'
 
 
 export default class Lesson extends Component {
@@ -42,19 +43,19 @@ export default class Lesson extends Component {
             <td>{this.props.lesson.description}</td>
             <td>{this.getDateTimeFormat(this.props.lesson.date)}</td>
             {/* lesson actions */}
-            <td>
+            <td className='action-links'>
 
                 {/* edit lesson */}
-                <div className="actionLink">
+                <div className="actions-link">
                     <Link to={'/lessons/edit/' + this.props.lesson._id} title='עריכת שיעור'>
-                        <i class="far fa-edit"></i>
+                        <i className="far fa-edit"></i>
                     </Link>
                 </div>
 
                 {/* delete lesson */}
-                <div className="actionLink delIcon">
+                <div className="actions-link delIcon">
                     <a href='#' onClick={() => { this.props.deleteLesson(this.props.lesson._id) }} title='מחיקת שיעור'>
-                        <i class="fas fa-trash del-icon"></i>
+                        <i className="fas fa-trash del-icon"></i>
                     </a>
                 </div>
             </td>

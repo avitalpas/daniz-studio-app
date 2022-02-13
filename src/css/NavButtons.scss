@@ -1,0 +1,26 @@
+#nav-buttons{
+    direction: rtl;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    text-align: right;
+    width: 100%;
+    margin: 0;
+    padding-right: 15px;
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+
+    i{
+        font-size: 23px;
+        padding-top: 5px;
+    }
+
+    p{
+        margin-right: 5px;
+        font-size: 17px;
+        display: inline-block;
+    }
+}
