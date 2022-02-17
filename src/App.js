@@ -6,30 +6,32 @@ import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-
 import './App.css';
 
 // import main pages componenets
-import TopNav from './components/TopNav';
-import Students from './components/Students';
-import Musics from './components/Musics';
+import TopNav from './components/TopNav/TopNav';
+import Students from './components/Students/Students';
+import Musics from './components/Music/Musics';
 import Lessons from './components/Lessons';
 import Test from './components/Test';
 
 // import new forms componenets
-import NewStudent from './components/NewStudent'
-import NewLesson from './components/NewLesson'
-import NewMusic from './components/NewMusic'
+import NewStudent from './components/Students/NewStudent'
+import NewLesson from './components/Lessons/NewLesson'
+import NewMusic from './components/Music/NewMusic'
 
 // import edit forms componenets
-import EditStudent from './components/EditStudent'
-import EditLesson from './components/EditLesson'
+import EditStudent from './components/Students/EditStudent'
+import EditLesson from './components/Lessons/EditLesson'
 
 // import details pages
-import StudentDetails from './components/StudentDetails';
+import StudentDetails from './components/Students/StudentDetails';
 
 // import fixed button componenet
-import NewItem from './components/NewItem';
+import NewItem from './components/NewItem/NewItem';
 
 // import admin components
-import Settings from './components/Settings'
-import NewCustomField from './components/NewCustomField'
+import Settings from './components/Settings/Settings'
+import NewCustomField from './components/Settings/NewCustomField'
+import GoogleCalendar from './components/Google Calendar/GoogleCalendar';
+import Home from './components/Home/Home';
 
 // main app function
 function App() {
@@ -39,7 +41,7 @@ function App() {
 
       <Router>
 
-        <div className="container">
+        <div>
           <TopNav />
 
           <Routes>
@@ -49,10 +51,12 @@ function App() {
             <Route exact path="/lessons" element={<Lessons />} />
             <Route exact path="/students" element={<Students />} />
             <Route exact path="/musics" element={<Musics />} />
+            <Route exact path="/home" element={<Home />} />
 
             {/* new forms */}
             <Route exact path="/students/new" element={<NewStudent />} />
             <Route exact path="/lessons/new" element={<NewLesson />} />
+            <Route path="/lessons/new/:id" element={<NewLesson/>} />
             <Route exact path="/musics/new" element={<NewMusic />} />
 
             {/* edit forms */}
@@ -65,6 +69,9 @@ function App() {
             {/* admin routes */}
             <Route exact path="/settings" element={<Settings />} />
             {/* <Route exact path="/customfield/new" element={<NewCustomField />} /> */}
+
+            {/* google calendar */}
+            <Route exact path="/google-cal" element={<GoogleCalendar />} />
 
 
           </Routes>

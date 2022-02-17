@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 // import stylesheet
-import '../css/Settings.scss'
+import '../../css/Settings.scss'
 
 // import costum field compopnent
 import CustomField from './CustomField'

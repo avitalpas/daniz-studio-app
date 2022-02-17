@@ -6,10 +6,16 @@
 
 body{
     font-family: 'Varela Round', sans-serif;
+
     
     h3{
       font-size: 25px;
       font-weight:600;
+      background-color: #1573b6;
+      color: white;
+      margin: 0;
+      padding: 10px 0;
+      transition: .5s ease-in-out;
     }
 
     hr{
@@ -18,7 +24,7 @@ body{
 }
 
 .bodyDiv{
-    margin-top: 120px !important;
+    margin-top: 70px !important;
     text-align: center;
 }
 
@@ -26,11 +32,15 @@ body{
     max-width: 600px;
     margin: auto;
     box-shadow: 0 0 10px rgba(128, 128, 128, 0.65);
-    padding: 20px;
+    padding: 0;
     border-radius: 2px;
     justify-items: center;
     animation: slide-in-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
+    p{
+      margin: 10px;
+    }
+    
     .form-control{
         margin: auto;
         margin-bottom: 10px;
@@ -98,8 +108,5 @@ body{
 
 
 @media only screen and (max-width: 600px) {
-  .bodyDiv{
-    margin-top: 90px !important;
 
-  }
 }

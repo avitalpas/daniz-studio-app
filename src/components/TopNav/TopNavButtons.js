@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/TopNavButtons.scss'
 import { Link } from 'react-router-dom'
 
 

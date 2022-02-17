@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 // import axios
 import axios from 'axios';
 
-import '../css/Student.scss'
+import '../../css/Student.scss'
 
 // student component
 export default function Student(props) {
@@ -63,6 +63,13 @@ export default function Student(props) {
                 <div className="actionLink">
                     <Link to={'/students/edit/' + props.student._id} title='עריכת תלמיד'>
                         <i className="far fa-edit"></i>
+                    </Link>
+                </div>
+
+                {/* new lesson */}
+                <div className="actionLink">
+                    <Link to={'/lessons/new/'+props.student._id} title='קביעת שיעור'>
+                        <i className="fas fa-calendar-week"></i>
                     </Link>
                 </div>
 

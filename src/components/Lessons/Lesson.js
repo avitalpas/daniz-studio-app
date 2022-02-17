@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../css/Lesson.scss'
+import '../../css/Lesson.scss'
 
 
 export default class Lesson extends Component {

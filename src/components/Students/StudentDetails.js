@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from "react-router-dom";
 import axios from 'axios';
-import '../css/Global.scss'
-import '../css/StudentDetails.scss'
-import NavButtons from './NavButtons';
+import '../../css/Global.scss'
+import '../../css/StudentDetails.scss'
+import NavButtons from '../NavButtons';
 import StudentDetailsActions from './StudentDetailsActions';
 import StudentFullDetails from './StudentFullDetails'
 

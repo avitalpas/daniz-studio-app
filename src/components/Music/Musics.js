@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 
 // import stylesheets
-import '../css/Music.css'
-import '../css/Global.scss'
+import '../../css/Music.css'
+import '../../css/Global.scss'
 
 // music component
 const Music = props => (

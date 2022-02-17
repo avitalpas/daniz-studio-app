@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import EditCustomFieldData from './EditCustomFieldData';
-import '../css/Global.scss'
+import '../../css/Global.scss'
 
 export default function EditStudent() {
 

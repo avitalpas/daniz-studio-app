@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 // import stylesheet
-import '../css/Global.scss'
+import '../../css/Global.scss'
 
 export default class NewStudent extends Component {
     constructor(props) {
@@ -49,7 +49,6 @@ export default class NewStudent extends Component {
         return (
             <div id="newStudent" className='bodyDiv form-float'>
                 <h3>הוספת תלמיד חדש</h3>
-                <hr/>
                 <form onSubmit={this.onSubmit} dir='rtl'>
 
                     <p>הכנס פרטי תלמיד:</p>

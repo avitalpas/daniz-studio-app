@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../css/TopNav.css'
-import TopNavLogo from './TopNavLogo'
+import '../../css/TopNav.scss'
+import TopNavLogo from '../TopNavLogo'
 import TopNavButtons from './TopNavButtons'
-import TopNavSearch from './TopNavSearch'
-import TopNavAccountButtons from './TopNavAccountButtons'
+// import TopNavSearch from '../TopNavSearch'
+import TopNavAccountButtons from '../TopNavAccountButtons'
 
 
 export default class TopNav extends Component {
@@ -13,7 +13,7 @@ export default class TopNav extends Component {
 
           <TopNavLogo/>
           <TopNavButtons/>
-          <TopNavSearch/>
+          {/* <TopNavSearch/> */}
           <TopNavAccountButtons/>
 
       </div>

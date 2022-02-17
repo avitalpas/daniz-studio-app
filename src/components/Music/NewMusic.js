@@ -38,7 +38,7 @@ export default class NewMusic extends Component {
         return (
             <div id="newMusic" className='bodyDiv form-float'>
                 <h3>הוספת יצירה חדשה</h3>
-                <hr/>
+
                 <form onSubmit={this.onSubmit} dir='rtl'>
 
                     <p>הכנס פרטי יצירה:</p>

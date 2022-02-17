@@ -1,14 +1,8 @@
 // import react
 import React, { Component } from 'react';
 
-// import link for router
-import { Link } from 'react-router-dom';
-
 // import axios for server requests
 import axios from 'axios';
-
-// stylesheet
-import '../css/students.scss'
 
 import Student from './Student'
 
@@ -34,6 +28,16 @@ export default class Students extends Component {
   componentDidMount() {
     axios.get('http://localhost:5000/students')
       .then(response => {
+
+        response.data.sort((a,b)=>{
+          let fa = a.name
+          let fb = b.name
+
+          if( fa < fb ) return -1
+          if( fa > fb ) return 1
+          else return 0
+        })
+        
         this.setState({ students: response.data })
       })
       .catch(error => console.log(error))
@@ -58,8 +62,16 @@ export default class Students extends Component {
   render() {
     return (
       <div id='students' className='bodyDiv'>
+
+        {/* header */}
         <h3>התלמידים שלי</h3>
-        <hr></hr>
+
+        {/* search */}
+        <div className="students-search">
+          
+        </div>
+
+        {/* students list */}
         <table className="table">
           <tbody>
             {this.studentsList()}
