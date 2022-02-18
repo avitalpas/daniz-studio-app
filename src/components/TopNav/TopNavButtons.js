@@ -9,6 +9,10 @@ export default class TopNavButtons extends Component {
     return (
       <div id='topNavButtons'>
 
+        {/* home */}
+        <div className='topNavButtonDiv' data-tooltip='בית'>
+          <Link to='/home'><i className="fas fa-home"></i></Link>
+        </div>
 
         {/* lessons */}
         <div className='topNavButtonDiv' data-tooltip='שיעורים'>
@@ -16,7 +20,7 @@ export default class TopNavButtons extends Component {
         </div>
 
         {/* student */}
-        <div className='topNavButtonDiv'  data-tooltip='תלמידים'>
+        <div className='topNavButtonDiv' data-tooltip='תלמידים'>
           <Link to='students'><i className="fas fa-user"></i></Link>
         </div>
 

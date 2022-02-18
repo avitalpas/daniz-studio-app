@@ -9,7 +9,7 @@ import './App.css';
 import TopNav from './components/TopNav/TopNav';
 import Students from './components/Students/Students';
 import Musics from './components/Music/Musics';
-import Lessons from './components/Lessons';
+import Lessons from './components/Lessons/Lessons';
 import Test from './components/Test';
 
 // import new forms componenets

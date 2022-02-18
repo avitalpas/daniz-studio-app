@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import favicon from '../img/logo/favicon.png'
+import favicon from '../../img/logo/favicon.png'
 
 export default class TopNavLogo extends Component {
   render() {

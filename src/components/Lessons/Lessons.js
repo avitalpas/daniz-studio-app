@@ -4,7 +4,6 @@ import '../../css/Global.scss'
 import Lesson from './Lesson'
 
 
-
 export default class Lessons extends Component {
   constructor(props) {
     super(props)
