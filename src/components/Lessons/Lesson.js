@@ -26,12 +26,12 @@ export default class Lesson extends Component {
 
     getDateTimeFormat(date) {
 
-        var curDate = new Date(date)
-        var formatedDate = curDate.getDate() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getFullYear()
-        var formatedMinutes = curDate.getMinutes()
+        let curDate = new Date(date)
+        let formatedDate = curDate.getDate() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getFullYear()
+        let formatedMinutes = curDate.getMinutes()
         if (formatedMinutes.toString().length < 2) formatedMinutes += '0'
-        var weekDayName = curDate.toLocaleDateString('he-IL', { weekday: 'short' })
-        var formatedTime = curDate.toLocaleString('he-IL', { hour: 'numeric', hour12: false }) + ':' + formatedMinutes
+        let weekDayName = curDate.toLocaleDateString('he-IL', { weekday: 'short' })
+        let formatedTime = curDate.toLocaleString('he-IL', { hour: 'numeric', hour12: false }) + ':' + formatedMinutes
 
         return formatedDate + ' ' + weekDayName + ' ' + formatedTime
     }

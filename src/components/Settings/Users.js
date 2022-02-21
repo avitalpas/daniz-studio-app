@@ -24,14 +24,14 @@ export default function Users() {
 
     const onUserNameChange = (e) => {
         
-        var tempUser = user
+        let tempUser = user
         tempUser.name = e.target.value
 
         setUser(tempUser)
     }
 
     const onUserMailChange = (e) => {
-        var tempUser = user
+        let tempUser = user
         tempUser.email = e.target.value
 
         setUser(tempUser)
