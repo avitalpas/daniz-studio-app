@@ -9,6 +9,8 @@ import '../../css/Settings.scss'
 
 // import costum field compopnent
 import CustomField from './CustomField'
+import UserProfile from './UserProfile';
+import Users from './Users';
 
 export default function Settings() {
 
@@ -77,9 +79,15 @@ export default function Settings() {
         <div id='settings' className='bodyDiv'>
             <h3>הגדרות מערכת</h3>
 
+            {/* user profile */}
+            <UserProfile/>
+
+            {/* users */}
+            <Users />
+
             {/* custom fields */}
-            <div className="custom-fields">
-                <h5>שדות מותאמים אישית</h5>
+            <div className="custom-fields settings-div">
+                <h4>שדות מותאמים אישית</h4>
 
                 {/* current fields list */}
                 {getFieldsList()}

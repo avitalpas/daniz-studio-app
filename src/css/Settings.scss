@@ -1,7 +1,16 @@
 #settings{
 
+    h3{
+        margin-bottom: 30px;
+    }
+
+    .settings-div{
+        text-align: right;
+        margin-bottom: 50px;
+        margin-right: 50px !important;
+    }
+
     .custom-fields{
-        margin-top: 40px;
         text-align: right;
 
         #new-field-form{

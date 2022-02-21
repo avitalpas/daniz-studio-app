@@ -36,6 +36,9 @@ const lessonsRouter = require('./routes/lessons.back.route')
 // student model routes
 const studentsRouter = require('./routes/students.back.route')
 
+// user model routes
+const usersRouter = require('./routes/users.back.route')
+
 // music model routes
 const musicRouter = require('./routes/music.back.route')
 
@@ -47,6 +50,7 @@ const customFieldDataRouter = require('./routes/customFieldData.back.route')
 
 app.use('/lessons', lessonsRouter)
 app.use('/students', studentsRouter)
+app.use('/users', usersRouter)
 app.use('/musics', musicRouter)
 app.use('/customfield', customFieldRouter)
 app.use('/customfielddata', customFieldDataRouter)

@@ -1,9 +1,7 @@
 // import react modules
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom'
-
-// import stylesheets
-import './App.css';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 // import main pages componenets
 import TopNav from './components/TopNav/TopNav';
@@ -32,9 +30,17 @@ import Settings from './components/Settings/Settings'
 import NewCustomField from './components/Settings/NewCustomField'
 import GoogleCalendar from './components/Google Calendar/GoogleCalendar';
 import Home from './components/Home/Home';
+import Loading from './components/Loading';
+import { useAuth0 } from '@auth0/auth0-react';
 
 // main app function
-function App() {
+function App() { 
+
+  const { isLoading } = useAuth0()  
+
+  if( isLoading ) {
+    return <Loading/>
+  }
 
   return (
     <div className="App">
