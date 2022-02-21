@@ -53,7 +53,7 @@ function App() {
           <Routes>
 
             {/* main pages */}
-            <Route exact path="/" element={<Lessons />} />
+            <Route exact path="/" element={<Students />} />
             <Route exact path="/lessons" element={<Lessons />} />
             <Route exact path="/students" element={<Students />} />
             <Route exact path="/musics" element={<Musics />} />

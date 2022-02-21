@@ -10,7 +10,7 @@ import '../../css/Student.scss'
 export default function Student(props) {
     const [customFields, setCustomFields] = useState([])
     const [isMounted, setIsMounted] = useState(false)
-    
+        
     useEffect(()=>{
         if (!isMounted) {
             axios.get('http://localhost:5000/customfield')
