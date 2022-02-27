@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../../css/Global.scss'
 import Lesson from './Lesson'
+import LessonsCalendar from './LessonsCalendar';
 
 
 export default class Lessons extends Component {
@@ -70,6 +71,9 @@ export default class Lessons extends Component {
             {this.lessonsList()}
           </tbody>
         </table>
+
+        {/* calendar */}
+        <LessonsCalendar/>
       </div>
     )
   }

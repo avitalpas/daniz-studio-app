@@ -3,9 +3,10 @@ import { useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import '../../css/Global.scss'
 import '../../css/StudentDetails.scss'
-import NavButtons from '../NavButtons';
+import NavButtons from './NavButtons';
 import StudentDetailsActions from './StudentDetailsActions';
 import StudentFullDetails from './StudentFullDetails'
+import StudentHeader from './StudentHeader';
 
 export default function StudentDetails(props) {
 
@@ -39,14 +40,19 @@ export default function StudentDetails(props) {
 
       <NavButtons from='students' />
 
+      <h3>פרטי תלמיד</h3>
+
       {/* name */}
-      <h3>{student.name}</h3>
+      <StudentHeader student={student}/>
+
+
+
 
       {/* actions */}
-      <StudentDetailsActions student={student} />
+      {/* <StudentDetailsActions student={student} /> */}
 
       {/* details */}
-      <StudentFullDetails student={student} customFields={customFields} />
+      {/* <StudentFullDetails student={student} customFields={customFields} /> */}
 
     </div>
   )

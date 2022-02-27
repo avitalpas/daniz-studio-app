@@ -1,0 +1,25 @@
+#lessons-calendar{
+    text-align: center;
+    direction: rtl;
+    background: rgb(67,144,199);
+    background: linear-gradient(90deg, rgba(67,144,199,1) 0%, rgba(34,72,100,1) 100%);
+    padding: 10px 30px 10px 30px;
+    color: white;
+    
+    table{
+        margin: auto;
+        width: 100%;
+
+        tr{
+            width: 100%;
+            direction: rtl;
+            
+            td{
+                padding: 10px 40px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+
+}

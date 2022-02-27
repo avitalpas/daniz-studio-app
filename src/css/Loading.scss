@@ -1,0 +1,188 @@
+// comment when loading page is ready !!
+// #topNav, 
+// #newItems{
+//     display: none !important;
+// }
+
+@import  url(https://fonts.googleapis.com/css?family=Montserrat);
+$width: 15px;
+$height: 15px;
+$bounce_height: 30px;
+$main_color: #1573b6;
+
+#loading-page{
+    text-align: center;
+    padding: 200px;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+
+    #bottom-obj{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: 150px;
+    }
+
+    #main-logo{
+        height: 150px;
+        width: 250px;
+        margin-bottom: 20px;
+    }
+
+    #side-logo{
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100px;
+    }
+
+    .text {
+        color: $main_color;
+      }
+}
+
+svg.tea {
+    --secondary: #33406f;
+  }
+
+#teabag {
+    transform-origin: top center;
+    transform: rotate(3deg);
+    animation: swing 2s infinite;
+}
+
+#steamL {
+    stroke-dasharray: 13;
+    stroke-dashoffset: 13;
+    animation: steamLarge 2s infinite;
+
+}
+
+#steamR {
+    stroke-dasharray: 9;
+    stroke-dashoffset: 9;
+    animation: steamSmall 2s infinite;
+
+}
+
+@-moz-keyframes swing {
+    50% {
+      transform: rotate(-3deg);
+    }
+  }
+  @-webkit-keyframes swing {
+    50% {
+      transform: rotate(-3deg);
+    }
+  }
+  @-o-keyframes swing {
+    50% {
+      transform: rotate(-3deg);
+    }
+  }
+  @keyframes swing {
+    50% {
+      transform: rotate(-3deg);
+    }
+  }
+  @-moz-keyframes steamLarge {
+    0% {
+      stroke-dashoffset: 13;
+      opacity: 0.6;
+    }
+    100% {
+      stroke-dashoffset: 39;
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes steamLarge {
+    0% {
+      stroke-dashoffset: 13;
+      opacity: 0.6;
+    }
+    100% {
+      stroke-dashoffset: 39;
+      opacity: 0;
+    }
+  }
+  @-o-keyframes steamLarge {
+    0% {
+      stroke-dashoffset: 13;
+      opacity: 0.6;
+    }
+    100% {
+      stroke-dashoffset: 39;
+      opacity: 0;
+    }
+  }
+  @keyframes steamLarge {
+    0% {
+      stroke-dashoffset: 13;
+      opacity: 0.6;
+    }
+    100% {
+      stroke-dashoffset: 39;
+      opacity: 0;
+    }
+  }
+  @-moz-keyframes steamSmall {
+    10% {
+      stroke-dashoffset: 9;
+      opacity: 0.6;
+    }
+    80% {
+      stroke-dashoffset: 27;
+      opacity: 0;
+    }
+    100% {
+      stroke-dashoffset: 27;
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes steamSmall {
+    10% {
+      stroke-dashoffset: 9;
+      opacity: 0.6;
+    }
+    80% {
+      stroke-dashoffset: 27;
+      opacity: 0;
+    }
+    100% {
+      stroke-dashoffset: 27;
+      opacity: 0;
+    }
+  }
+  @-o-keyframes steamSmall {
+    10% {
+      stroke-dashoffset: 9;
+      opacity: 0.6;
+    }
+    80% {
+      stroke-dashoffset: 27;
+      opacity: 0;
+    }
+    100% {
+      stroke-dashoffset: 27;
+      opacity: 0;
+    }
+  }
+  @keyframes steamSmall {
+    10% {
+      stroke-dashoffset: 9;
+      opacity: 0.6;
+    }
+    80% {
+      stroke-dashoffset: 27;
+      opacity: 0;
+    }
+    100% {
+      stroke-dashoffset: 27;
+      opacity: 0;
+    }
+  }
+  

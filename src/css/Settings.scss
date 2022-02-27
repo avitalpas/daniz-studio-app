@@ -1,4 +1,5 @@
 #settings{
+    direction: rtl;
 
     h3{
         margin-bottom: 30px;
@@ -6,15 +7,57 @@
 
     .settings-div{
         text-align: right;
-        margin-bottom: 50px;
-        margin-right: 50px !important;
-    }
+        box-shadow: 0 0 10px rgba(128, 128, 128, 0.698);
+        width: 90%;
+        margin: 0 auto 20px auto;
+        padding: 10px 15px;
+        border-radius: 7px;
+        transition: 1s ease-in-out;
 
-    .custom-fields{
-        text-align: right;
+        .settings-header{
+            h4{
+                display: inline;
+                margin-left: 15px;
+            }
+
+            a{
+                display: inline;
+                color: gray;
+                text-decoration: none;
+                font-size: 20px;
+                border: .5px solid gray;
+                padding: 1px 7px;
+                border-radius: 50%;
+                transition: .3s ease-in-out;
+
+                &:hover{
+                    background-color: rgba(128, 128, 128, 0.219);
+                }
+            }
+
+        }
+
+        #new-user-form{
+            transition: 1s ease-in-out;
+            display: none;
+
+            a{
+                display: inline;
+                color: gray;
+                text-decoration: none;
+                font-size: 20px;
+                border: .5px solid gray;
+                padding: 1px 7px;
+                border-radius: 50%;
+                transition: .3s ease-in-out;
+
+                &:hover{
+                    background-color: rgba(128, 128, 128, 0.219);
+                }
+            }
+        }
 
         #new-field-form{
-            direction: rtl;
 
             input,
             select{
@@ -52,4 +95,5 @@
             }
         }
     }
+
 }

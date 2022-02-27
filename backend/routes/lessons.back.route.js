@@ -11,11 +11,13 @@ router.route('/').get((req, res) => {
 // post new lesson
 router.route('/new').post((req,res)=>{
     const studentID = req.body.studentID
+    const musicID = req.body.musicID
     const description = req.body.description
     const date = Date.parse(req.body.date)
 
     const newLesson = new Lesson({
         studentID,
+        musicID,
         description,
         date
     })

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import LoginButton from '../Login/LoginButton';
-import LogoutButton from '../Login/LogoutButton';
 import axios from 'axios';
 
 export default function TopNavAccountButtons() {
@@ -36,10 +34,19 @@ export default function TopNavAccountButtons() {
       return (
         <div id='user-menu'>
           <img src={user.picture} />
+
+          {/* dropdown menu */}
+          <div id='account-menu'>
+            <a href='/settings'>פרטי חשבון</a>
+            <a href='/settings'>הגדרות מערכת</a>
+            <a href='#' onClick={() => logout()}>התנתק</a>
+          </div>
         </div>
       )
     } else {
-      return 'hi'
+      return (
+        <button onClick={() => loginWithRedirect()}>התחבר</button>
+      )
 
     }
   }
@@ -47,13 +54,9 @@ export default function TopNavAccountButtons() {
   return (
     <div id='top-nav-acc-btns'>
 
-      {/* settings button */}
-      <a href="/settings">
-        <i className="fas fa-cog"></i>
-      </a>
-
       {/* authentication button */}
       {showUserMenu()}
+
     </div>
   )
 }

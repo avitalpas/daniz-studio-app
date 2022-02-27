@@ -1,4 +1,57 @@
 #student-details{
+
+    #student-details-header{
+        background: rgb(67,144,199);
+        background: linear-gradient(90deg, rgba(67,144,199,1) 0%, rgba(34,72,100,1) 100%);
+    
+        text-align: right;
+        padding: 50px;
+    
+        color: white;
+        border-bottom-left-radius: 50%;
+
+        h4{
+            font-weight: bold;
+        }
+
+        .header-detail-div{
+            direction: rtl;
+
+            p{
+                display: inline;
+                margin-right: 15px;
+            }
+        }
+
+    }
+
+    #nav-buttons{
+        direction: rtl;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        text-align: right;
+        width: 100%;
+        margin: 0;
+        padding-right: 15px;
+        
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    
+        i{
+            font-size: 23px;
+            padding-top: 5px;
+        }
+    
+        p{
+            margin-right: 5px;
+            font-size: 17px;
+            display: inline-block;
+        }
+    }
+
     .action-links{
         display: flex;
         width: 100%;

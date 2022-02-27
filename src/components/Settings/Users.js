@@ -1,15 +1,13 @@
-import { set } from 'mongoose';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import NewUser from './NewUser';
+import SettingsHeader from './SettingsHeader';
 
 export default function Users() {
 
     const [users, setUsers] = useState([])
     const [isMounted, setIsMounted] = useState(false)
-    const [user, setUser] = useState({
-        name:'',
-        email:''
-    })
+
 
     useEffect(() => {
         if (!isMounted) {
@@ -22,23 +20,8 @@ export default function Users() {
         }
     })
 
-    const onUserNameChange = (e) => {
-        
-        let tempUser = user
-        tempUser.name = e.target.value
+    function usersList(){
 
-        setUser(tempUser)
-    }
-
-    const onUserMailChange = (e) => {
-        let tempUser = user
-        tempUser.email = e.target.value
-
-        setUser(tempUser)
-    }
-
-    const usersList = () => {
-        
         return users.map(user => {
             return (
                 <div>
@@ -49,41 +32,22 @@ export default function Users() {
         })
     }
 
-    const onUserSubmit = (e) => {
-        e.preventDefault()
+    function showNewUserForm(){
+        var newUserForm = document.querySelector('#new-user-form')
+        newUserForm.style.display = 'inline'
+    } 
 
-        console.log('submit new user')
-        console.log(user)
-
-        axios.post('http://localhost:5000/users/new', user)
-        .then(res => console.log(res.data))
-
-        // window.location = '/settings'
-
-        alert('tnx')
-    }
 
     return (
         <div id='users' className='settings-div'>
-            <h4>משתמשי מערכת</h4>
+
+            <SettingsHeader header='משתמשי מערכת' addNew={showNewUserForm}/>
 
             {/* users list */}
             {usersList()}
 
             {/* new user */}
-            <form id='new-user-form' onSubmit={onUserSubmit}>
-
-                {/* name */}
-                <input type='text' placeholder='שם' onChange={onUserNameChange} />
-
-                {/* email */}
-                <input type='text' placeholder='מייל' onChange={onUserMailChange} />
-
-
-                {/* submit */}
-                <button type='submit'>הוסף</button>
-            </form>
-
+            <NewUser />
         </div>
     )
 }

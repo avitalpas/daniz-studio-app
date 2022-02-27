@@ -1,5 +1,5 @@
 // import react modules
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom'
 import { Auth0Provider } from '@auth0/auth0-react';
 
@@ -33,61 +33,75 @@ import Home from './components/Home/Home';
 import Loading from './components/Loading';
 import { useAuth0 } from '@auth0/auth0-react';
 
+import axios from 'axios';
+
 // main app function
-function App() { 
+function App() {
 
-  const { isLoading } = useAuth0()  
+  const { isLoading } = useAuth0()
+  const { user } = useAuth0()
+  const { loginWithRedirect } = useAuth0()
 
-  if( isLoading ) {
-    return <Loading/>
+
+  if (isLoading) {
+    return <Loading />
+  } else if( user != undefined ) {
+    return (
+      <div className="App">
+
+        <Router>
+
+          <div>
+            <TopNav />
+
+            <Routes>
+
+              {/* main pages */}
+              <Route exact path="/" element={<Students />} />
+              <Route exact path="/lessons" element={<Lessons />} />
+              <Route exact path="/students" element={<Students />} />
+              <Route exact path="/musics" element={<Musics />} />
+              <Route exact path="/home" element={<Home />} />
+              <Route exact path="/loading" element={<Loading />} />
+
+              {/* new forms */}
+              <Route exact path="/students/new" element={<NewStudent />} />
+              <Route exact path="/lessons/new" element={<NewLesson />} />
+              <Route path="/lessons/new/:id" element={<NewLesson />} />
+              <Route exact path="/musics/new" element={<NewMusic />} />
+
+              {/* edit forms */}
+              <Route path="/lessons/edit/:id" element={<EditLesson />} />
+              <Route path="/students/edit/:id" element={<EditStudent />} />
+
+              {/* details */}
+              <Route exact path="/students/details/:id" element={<StudentDetails />} />
+
+              {/* admin routes */}
+              <Route exact path="/settings" element={<Settings />} />
+              {/* <Route exact path="/customfield/new" element={<NewCustomField />} /> */}
+
+              {/* google calendar */}
+              <Route exact path="/google-cal" element={<GoogleCalendar />} />
+
+
+            </Routes>
+
+            <NewItem />
+          </div>
+        </Router>
+
+      </div>
+    );
+  } else {
+    return (
+      <div className="App">
+        {loginWithRedirect()}
+      </div>
+    )
   }
 
-  return (
-    <div className="App">
 
-      <Router>
-
-        <div>
-          <TopNav />
-
-          <Routes>
-
-            {/* main pages */}
-            <Route exact path="/" element={<Students />} />
-            <Route exact path="/lessons" element={<Lessons />} />
-            <Route exact path="/students" element={<Students />} />
-            <Route exact path="/musics" element={<Musics />} />
-            <Route exact path="/home" element={<Home />} />
-
-            {/* new forms */}
-            <Route exact path="/students/new" element={<NewStudent />} />
-            <Route exact path="/lessons/new" element={<NewLesson />} />
-            <Route path="/lessons/new/:id" element={<NewLesson/>} />
-            <Route exact path="/musics/new" element={<NewMusic />} />
-
-            {/* edit forms */}
-            <Route path="/lessons/edit/:id" element={<EditLesson />} />
-            <Route path="/students/edit/:id" element={<EditStudent/>} />
-
-            {/* details */}
-            <Route exact path="/students/details/:id" element={<StudentDetails />} />
-
-            {/* admin routes */}
-            <Route exact path="/settings" element={<Settings />} />
-            {/* <Route exact path="/customfield/new" element={<NewCustomField />} /> */}
-
-            {/* google calendar */}
-            <Route exact path="/google-cal" element={<GoogleCalendar />} />
-
-
-          </Routes>
-
-          <NewItem />
-        </div>
-      </Router>
-
-    </div>
-  );
 }
 
 export default App;

@@ -8,7 +8,9 @@ export default function UserProfile() {
     if (user != null) {
         return (
             <div className='settings-div'>
-                <h4>פרטי משתמש</h4>
+                <div className="setting-header">
+                    <h4>פרטי משתמש</h4>
+                </div>
                 <img src={user.picture}></img>
                 {/* <p>{JSON.stringify(user, null, 2)}</p> */}
                 <p>{user.name}</p>
