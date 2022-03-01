@@ -45,14 +45,11 @@ export default function StudentDetails(props) {
       {/* name */}
       <StudentHeader student={student}/>
 
-
-
-
       {/* actions */}
-      {/* <StudentDetailsActions student={student} /> */}
+      <StudentDetailsActions student={student} />
 
       {/* details */}
-      {/* <StudentFullDetails student={student} customFields={customFields} /> */}
+      <StudentFullDetails student={student} customFields={customFields} />
 
     </div>
   )

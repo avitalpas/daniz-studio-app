@@ -1,14 +1,12 @@
 // import react modules
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom'
-import { Auth0Provider } from '@auth0/auth0-react';
 
 // import main pages componenets
 import TopNav from './components/TopNav/TopNav';
 import Students from './components/Students/Students';
 import Musics from './components/Music/Musics';
 import Lessons from './components/Lessons/Lessons';
-import Test from './components/Test';
 
 // import new forms componenets
 import NewStudent from './components/Students/NewStudent'
@@ -27,25 +25,24 @@ import NewItem from './components/NewItem/NewItem';
 
 // import admin components
 import Settings from './components/Settings/Settings'
-import NewCustomField from './components/Settings/NewCustomField'
 import GoogleCalendar from './components/Google Calendar/GoogleCalendar';
 import Home from './components/Home/Home';
 import Loading from './components/Loading';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import axios from 'axios';
+import LoginRedirect from './components/Login/LoginRedirect';
+import InvalidUser from './components/Login/InvalidUser';
 
 // main app function
 function App() {
 
   const { isLoading } = useAuth0()
   const { user } = useAuth0()
-  const { loginWithRedirect } = useAuth0()
-
 
   if (isLoading) {
     return <Loading />
-  } else if( user != undefined ) {
+
+  } else if (user != undefined) {
     return (
       <div className="App">
 
@@ -62,7 +59,10 @@ function App() {
               <Route exact path="/students" element={<Students />} />
               <Route exact path="/musics" element={<Musics />} />
               <Route exact path="/home" element={<Home />} />
+
+              {/* message pages */}
               <Route exact path="/loading" element={<Loading />} />
+              <Route exact path="/invaliduser" element={<InvalidUser/>} />
 
               {/* new forms */}
               <Route exact path="/students/new" element={<NewStudent />} />
@@ -79,7 +79,6 @@ function App() {
 
               {/* admin routes */}
               <Route exact path="/settings" element={<Settings />} />
-              {/* <Route exact path="/customfield/new" element={<NewCustomField />} /> */}
 
               {/* google calendar */}
               <Route exact path="/google-cal" element={<GoogleCalendar />} />
@@ -96,7 +95,7 @@ function App() {
   } else {
     return (
       <div className="App">
-        {loginWithRedirect()}
+        <LoginRedirect />
       </div>
     )
   }

@@ -101,28 +101,22 @@
             display: inline;
             cursor: pointer;
 
-            
-            
             img{
                 border-radius: 50%;
                 height: 40px;
-
+                margin-bottom: 16px;
             }
             
-            &:hover #account-menu{
-                opacity: 1;
-            }
-
             #account-menu{
-                margin-top: 16px;
                 margin-left: 0;
                 background-color: white;
                 width: max-content;
                 position: absolute;
                 left: 0;
-                transition: .3s ease-in-out;
+                transition: .7s ease-in-out;
                 box-shadow: 0 0 15px rgba(128, 128, 128, 0.445);
                 opacity: 0;
+                left: -200px;
 
                 a{
                     display: block;
@@ -135,6 +129,11 @@
                         background-color: rgba(128, 128, 128, 0.342);
                     }
                 }
+            }
+        
+            &:hover #account-menu{
+                left: 0;
+                opacity: 1;
             }
         }
 

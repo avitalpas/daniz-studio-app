@@ -1,48 +1,57 @@
+@import "Global.scss";
+
 .student-td{
     transition: .7s;
     line-height: 50px;
-
+    
     .student-details{
-
+        
+        padding-right: 30px;
         text-align: right;
         font-size: 23px;
     
         a{
             text-decoration: none;
             color: black;
+            font-size: 21px;
         }
     }
 
     .student-actions{
         text-align: left;
-
         width: max-content;
+        transition: .3s ease-in-out;
+        padding-left: 30px;
+
+        .actionLink{
+            display: inline;
+            padding: 3px 5px;
+            margin: 10px 5px;
+            transition: .7s;
+            
+            a{
+                text-decoration: none;
+                
+            }
+            
+            div{
+                width: 20px;
+            }
+            
+            i{
+                color: $button_gray;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                text-align: center;
+                padding-top: 8px;
+                border: 1px solid $button_gray;
+                font-size: 23px;
+                transition: .7s;
+            }
+        }
     }
 
-    .actionLink{
-        display: inline;
-        padding: 3px 5px;
-        margin: 5px;
-        color: darkgray;
-        transition: .7s;
-        
-        a{
-            text-decoration: none;
-        }
-        
-        div{
-            width: 20px;
-        }
-        
-        i{
-            color: black;
-            font-size: 23px;
-            transition: .7s;
-        }
     
-        .del-icon:hover{
-            color: rgb(195, 0, 0);
-        }
-    }
     
 }

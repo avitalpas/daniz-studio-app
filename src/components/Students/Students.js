@@ -6,6 +6,8 @@ import axios from 'axios';
 
 import Student from './Student'
 
+import '../../css/Students.scss'
+
 
 // students ( list ) component
 export default class Students extends Component {
@@ -16,12 +18,14 @@ export default class Students extends Component {
 
     // bond this to functions
     this.deleteStudent = this.deleteStudent.bind(this)
+    this.onStudentSearchChange = this.onStudentSearchChange.bind(this)
 
     // default state variables
     this.state = {
 
       // students array
-      students: []
+      students: [], 
+      tempStudents: []
     }
   }
 
@@ -38,7 +42,10 @@ export default class Students extends Component {
           else return 0
         })
         
-        this.setState({ students: response.data })
+        this.setState({ 
+          students: response.data,
+          tempStudents: response.data
+         })
       })
       .catch(error => console.log(error))
   }
@@ -58,6 +65,23 @@ export default class Students extends Component {
     })
   }
 
+  onStudentSearchChange(e){
+    if( e.target.value == '') {
+      this.setState({
+        students: this.state.tempStudents
+      })
+    } else {
+      this.filterStudents(this.state.tempStudents, e.target.value)
+    }
+  }
+
+  filterStudents(array, string){
+
+    let tempArr = array
+    tempArr = tempArr.filter( stu => stu.name.includes(string))
+    
+    this.setState({ students: tempArr })
+  }
 
   render() {
     return (
@@ -67,8 +91,10 @@ export default class Students extends Component {
         <h3>התלמידים שלי</h3>
 
         {/* search */}
-        <div className="students-search">
-          
+        <div id="students-search">
+          <i className="fas fa-filter"></i>
+          <input type="text" placeholder='חיפוש' onChange={this.onStudentSearchChange}/>
+        <i className="fas fa-search"></i>
         </div>
 
         {/* students list */}

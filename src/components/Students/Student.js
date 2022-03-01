@@ -53,18 +53,18 @@ export default function Student(props) {
                 
 
                 {/* delete student */}
-                <div className="actionLink delIcon">
+                {/* <div className="actionLink delIcon">
                     <a href='#' onClick={() => { props.deleteStudent(props.student._id) }} title='מחיקת תלמיד'>
                         <i className="fas fa-trash-alt del-icon"></i>
                     </a>
-                </div>
+                </div> */}
 
                 {/* edit student */}
-                <div className="actionLink">
+                {/* <div className="actionLink">
                     <Link to={'/students/edit/' + props.student._id} title='עריכת תלמיד'>
                         <i className="far fa-edit"></i>
                     </Link>
-                </div>
+                </div> */}
 
                 {/* new lesson */}
                 <div className="actionLink">
