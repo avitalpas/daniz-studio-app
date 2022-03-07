@@ -2,46 +2,69 @@ import React, { useState, useEffect } from 'react'
 
 export default function MonthDays(props) {
 
+    const [curDate, setCurDate] = useState(props.curDate)
     const [days, setDays] = useState([])
-    const [curDate, setCurDate] = useState('')
-    const [isMounted, setIsMounted] = useState(false)
-    
+
     useEffect(() => {
-        console.log(props.curDate)
         setCurDate(props.curDate)
-        console.log(Date.parse(props.curDate))
-        // getCurWeekDates()
-        if (!isMounted) {
+        getCurWeekDates()
+    }, [props.curDate])
 
+    const getCurWeekDates = () => {
 
-            setIsMounted(true)
-        }
-    })
-
-    const getCurWeekDates = (date) => {
-
-        console.log(date)
+        let tempDate = new Date(curDate)
         const daysArr = []
 
         for (let i = 0; i < 7; i++) {
 
-            if (date.getDay() == i) {
-                daysArr.push(date.getDate())
-            } else if( date.getDay() < i){
-                daysArr.push((date.getDate() + (i - date.getDay())))
+            if (tempDate.getDay() > i) {
+                let prevDay = new Date(tempDate)
+                prevDay.setDate(prevDay.getDate() - (tempDate.getDay() - i))
+                daysArr.push(prevDay)
+
+            } else if (tempDate.getDay() == i) {
+
+                daysArr.push(tempDate)
             } else {
-                daysArr.push('')
+
+                let nextDay = new Date(tempDate)
+                nextDay.setDate(nextDay.getDate() + (7 - i))
+                daysArr.push(nextDay)
             }
+
         }
+
 
         setDays(daysArr)
     }
 
+    function onDateClick(e) {
+        console.log('hi')
+    }
+
+    function getDates() {
+        return days.map((day, index) => {
+            if ( curDate.getDate() == day.getDate() ) {
+                return <td key={index}  onClick={onDateClick}>
+                            <p className='nav-date active-date'>
+                                {day.getDate()}
+                            </p>
+                        </td>
+            } else {
+                return <td key={index} onClick={onDateClick}>
+                            <p className='nav-date'>
+                                {day.getDate()}
+                            </p>
+                        </td>
+
+            }
+        })
+
+    }
+
     return (
-        <tr id='lesssn-month-days'>
-            {days.map(day => {
-                return <td key={day}>{day}</td>
-            })}
+        <tr id='lesson-month-days'>
+            {getDates()}
         </tr>
     )
 }

@@ -1,12 +1,22 @@
 import React from 'react'
 
-const daysOfTheWeek = ['א', 'ו', 'ה', 'ד', 'ג', 'ב', 'ש']
+const daysOfTheWeek = [
+  'א',
+  'ב',
+  'ג',
+  'ד',
+  'ה',
+  'ו',
+  'ש',
+]
 export default function WeekDays() {
   return (
     <tr id='days-of-the-week'>
         
          {daysOfTheWeek.map( day => {
-             return <td key={day}>{day}</td>
+             return <td key={day}>
+               <p>{day}</p>
+             </td>
          })}
 
     </tr>

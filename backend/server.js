@@ -30,22 +30,12 @@ connection.once('open', () => {
     console.log('MongoDB database connection astablished successfully');
 })
 
-// lesson model routes
+// routers
 const lessonsRouter = require('./routes/lessons.back.route')
-
-// student model routes
 const studentsRouter = require('./routes/students.back.route')
-
-// user model routes
 const usersRouter = require('./routes/users.back.route')
-
-// music model routes
 const musicRouter = require('./routes/music.back.route')
-
-// custom field model routes
 const customFieldRouter = require('./routes/CustomField.back.route')
-
-// custom field data model routes
 const customFieldDataRouter = require('./routes/customFieldData.back.route')
 
 app.use('/lessons', lessonsRouter)

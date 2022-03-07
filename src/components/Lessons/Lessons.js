@@ -10,7 +10,6 @@ export default class Lessons extends Component {
     super(props)
 
     this.deleteLesson = this.deleteLesson.bind(this)
-    this.lessonsList = this.lessonsList.bind(this)
 
     this.state = {
       lessons: [],
@@ -44,36 +43,13 @@ export default class Lessons extends Component {
     })
   }
 
-  lessonsList(){    
-
-    return this.state.lessons.map(curLesson => {
-      return <Lesson lesson={curLesson} 
-                     deleteLesson={this.deleteLesson} 
-                     key={curLesson._id} 
-              />
-    })
-  }
-
   render() {
     return (
       <div id='calendar' className='bodyDiv'>
         <h3>רשימת השיעורים שלי</h3>
 
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>תלמיד</th>
-              <th>תיאור</th>
-              <th>תאריך</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.lessonsList()}
-          </tbody>
-        </table>
-
         {/* calendar */}
-        <LessonsCalendar/>
+        <LessonsCalendar lessons={this.state.lessons} students={this.state.students}/>
       </div>
     )
   }

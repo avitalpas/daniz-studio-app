@@ -1,4 +1,4 @@
-#lessons-calendar{
+.week-navigation{
     text-align: center;
     direction: rtl;
     background: rgb(67,144,199);
@@ -10,6 +10,10 @@
         margin: auto;
         width: 100%;
 
+        tbody{
+            border-top-left-radius: 30px;
+        }
+
         tr{
             width: 100%;
             direction: rtl;
@@ -18,8 +22,92 @@
                 padding: 10px 40px;
                 font-size: 20px;
                 font-weight: bold;
+                transition: .3s ease-in-out;
+                width: 50px;
+
+                .nav-date{
+                    cursor: pointer;
+                    border-radius: 50%;
+                    transition: .3s ease-in-out;
+                    width: max-content;
+                    padding: 0 10px;
+                    margin: auto;
+
+
+                    &:hover{
+                        border: .3px solid white;
+                    }
+                }
+
+                .active-date{
+                    border: .3px solid white;
+                }
             }
         }
     }
 
+}
+
+
+#day-lessons{
+
+    display: flex;
+
+    .hours-list{
+        display: inline-block;
+        width: 10%;
+    }
+
+    #hour-val-divs{
+        width: 80%;
+        .hour-value{
+            height: 24px;
+
+            .lesson-details{
+                display: inline;
+                width: 100%;
+                background: rgb(67,144,199);
+                background: linear-gradient(90deg, rgba(67,144,199,1) 0%, rgba(34,72,100,1) 100%);
+               color: white;
+               border-radius: 10px;
+               box-shadow: 0 0 10px rgba(128, 128, 128, 0.534);
+        
+               display: flex;
+               direction: rtl;
+               margin-left: 20px;
+        
+               .details{
+                width: 75%;
+                text-align: right;
+                padding: 5px 10px;
+        
+               }
+        
+               p{
+                   margin: 0;
+               }
+               
+               .call-button{
+                   width: 20%;
+                   padding-top: 25px;
+                   text-align: left;
+                   
+                   a{
+                       background-color: white;
+                       border: none;
+                       border-radius: 50%;
+                       color: rgb(67,144,199);
+                       text-align: left;
+                       font-size: 20px;
+                       padding: 5px;
+                   }
+               }
+        
+            }
+        }
+
+    }
+
+
+    
 }
