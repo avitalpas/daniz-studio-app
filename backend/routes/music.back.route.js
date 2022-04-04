@@ -10,16 +10,17 @@ router.route('/').get((req, res) => {
 
 // post new music
 router.route('/new').post((req,res)=>{
-    const name = req.body.name
+    console.log(`req: ${JSON.stringify(req.body)}`);
 
     const newMusic = new Music({
-        name
+        name: req.body.name
     })
 
     newMusic.save()
     .then(()=>res.json('Music added!'))
     .catch(err=>res.status(400).json('Error: + err'))
 })
+
 
 // delete music by id
 router.route('/:id').delete((req, res) => {

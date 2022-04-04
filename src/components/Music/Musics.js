@@ -27,14 +27,14 @@ const Music = props => (
       {/* edit music */}
       <div className="actionLink">
         <Link to={'/musics/edit/' + props.music._id} title='עריכת תלמיד'>
-          <i class="far fa-edit"></i>
+          <i className="far fa-edit"></i>
         </Link>
       </div>
 
       {/* delete music */}
       <div className="actionLink delIcon">
         <a href='#' onClick={() => { props.deleteMusic(props.music._id) }} title='מחיקת תלמיד'>
-          <i class="fas fa-trash del-icon"></i>
+          <i className="fas fa-trash del-icon"></i>
         </a>
       </div>
     </td>
@@ -86,7 +86,6 @@ export default class Musics extends Component {
           <thead className="thead-light">
             <tr>
               <th>שם</th>
-              <th>תווים</th>
             </tr>
           </thead>
           <tbody>

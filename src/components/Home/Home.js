@@ -1,7 +1,12 @@
 import React from 'react'
+import '../../css/Global.scss'
 
 export default function Home() {
   return (
-    <div>Home</div>
+    <div className='bodyDiv'>
+      <h3>בית</h3>
+      
+      {/* total students */}
+    </div>
   )
 }

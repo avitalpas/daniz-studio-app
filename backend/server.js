@@ -7,7 +7,6 @@ const grid = require('gridfs-stream')
 const methodOverride = require('method-override')
 const crypto = require('crypto')
 const router = require('express').Router()
-let Upload = require('./models/Upload.model')
 
 // require dotenv
 require('dotenv').config()
@@ -22,6 +21,7 @@ const port = process.env.PORT || 5000
 app.use(cors())
 app.use(express.json())
 app.use(methodOverride('_method'))
+app.use(express.urlencoded({ extended: true }));
 
 // MongoDB uri connection
 const uri = process.env.ATLAS_URI;
@@ -41,6 +41,7 @@ const usersRouter = require('./routes/users.back.route')
 const musicRouter = require('./routes/music.back.route')
 const customFieldRouter = require('./routes/CustomField.back.route')
 const customFieldDataRouter = require('./routes/customFieldData.back.route')
+const filepondRouter = require('./routes/filepond.back.route')
 
 app.use('/lessons', lessonsRouter)
 app.use('/students', studentsRouter)
@@ -48,6 +49,7 @@ app.use('/users', usersRouter)
 app.use('/musics', musicRouter)
 app.use('/customfield', customFieldRouter)
 app.use('/customfielddata', customFieldDataRouter)
+app.use('/filepond', filepondRouter)
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
