@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 
 // import stylesheets
-import '../../css/Music.css'
+import '../../css/Music.scss'
 import '../../css/Global.scss'
 
 // music component
@@ -17,6 +17,9 @@ const Music = props => (
 
     {/* music name */}
     <td>{props.music.name}</td>
+
+    {/* music sheet */}
+    <td>{props.music.sheet}</td>
 
     {/* music actions */}
     <td>
@@ -83,6 +86,7 @@ export default class Musics extends Component {
           <thead className="thead-light">
             <tr>
               <th>שם</th>
+              <th>תווים</th>
             </tr>
           </thead>
           <tbody>

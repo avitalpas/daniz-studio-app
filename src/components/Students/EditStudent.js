@@ -21,7 +21,6 @@ export default function EditStudent() {
             axios.get('http://localhost:5000/students/' + id)
                 .then(response => {
                     setStudent(response.data)
-                    // console.log(student);
                 })
                 .catch(error => console.log(error))
 
@@ -29,7 +28,6 @@ export default function EditStudent() {
             axios.get('http://localhost:5000/customfield')
                 .then(response => {
                     setCustomFields(response.data)
-                    // console.log(customFields);
                 })
                 .catch(error => console.log(error))
 
@@ -37,7 +35,6 @@ export default function EditStudent() {
             axios.get('http://localhost:5000/customfielddata')
                 .then(response => {
                     setCustomFieldsData(response.data)
-                    // console.log(customFields);
                     setIsMounted(true)
                 })
                 .catch(error => console.log(error))
@@ -74,10 +71,15 @@ export default function EditStudent() {
         window.location = '/students'
     }
 
+    function updateCustomField(tempField){
+
+        let searchIfExists = customFieldsData.find( el => el.fieldID == tempField.fieldID)
+    }
+
     function getCustomFields() {
         return customFields.map(field => {
             return (
-                <EditCustomFieldData field={field} customFieldsData={customFieldsData} studentID={student._id} key={field._id}/>
+                <EditCustomFieldData updateCustomField={updateCustomField} field={field} customFieldsData={customFieldsData} studentID={student._id} key={field._id}/>
             )
         })
     }

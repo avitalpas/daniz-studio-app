@@ -32,7 +32,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import LoginRedirect from './components/Login/LoginRedirect';
 import InvalidUser from './components/Login/InvalidUser';
-
+import Test from './components/Test'
+import TestMusic from './components/Music/TestMusic'
 // main app function
 function App() {
 
@@ -82,6 +83,10 @@ function App() {
 
               {/* google calendar */}
               <Route exact path="/google-cal" element={<GoogleCalendar />} />
+
+              {/* testing */}
+              <Route exact path="/test" element={<Test />} />
+              <Route exact path="/TestMusic" element={<TestMusic />} />
 
 
             </Routes>

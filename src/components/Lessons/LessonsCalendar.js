@@ -30,6 +30,18 @@ export default function LessonsCalendar(props) {
     console.log(curDate.toString())
   }
 
+  async function setMainCurDate(newDate){
+    console.log(newDate)
+    let tempDate = new Date(newDate)
+
+    if( tempDate == curDate ){
+      console.log(curDate)
+    } else {
+      setCurDate(tempDate)
+      console.log(curDate)
+    }
+  }
+
   return (
     <div id='lessons-calendar'>
 
@@ -37,10 +49,10 @@ export default function LessonsCalendar(props) {
         <CurWeekNav curDate={curDate.toString()} nextWeek={nextWeek} prevWeek={prevWeek}/>
         <table>
           <thead>
-            <WeekDays />
+            <WeekDays/>
           </thead>
           <tbody>
-            <MonthDays curDate={curDate} />
+            <MonthDays curDate={curDate} setMainCurDate={setMainCurDate}/>
           </tbody>
         </table>
 
