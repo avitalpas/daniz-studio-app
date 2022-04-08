@@ -4,27 +4,27 @@ import { useAuth0 } from '@auth0/auth0-react'
 export default function UserProfile() {
 
     const { user } = useAuth0()
+    const { logout } = useAuth0()
 
     if (user != null) {
         return (
             <div className='settings-div'>
-                <div className="setting-header">
+                <div className="settings-header">
                     <h4>פרטי משתמש</h4>
+                    <a id='logout' href='#' onClick={() => logout()}>התנתק</a>
                 </div>
-                <img src={user.picture}></img>
-                {/* <p>{JSON.stringify(user, null, 2)}</p> */}
-                <p>{user.name}</p>
-                <p>{user.email}</p>
+
+                {/* loggen in user details */}
+                <div className="logged-user">
+                    <img src={user.picture}></img>
+
+                    <div className="logged-user-details">
+                        <p>{user.name}</p>
+                        <p>{user.email}</p>
+                    </div>
+                </div>
             </div>
         )
 
-    } else {
-        return (
-            <div className='settings-div'>
-                <h4>פרטי משתמש</h4>
-
-                משתמש לא מחובר
-            </div>
-        )
     }
 }

@@ -1,11 +1,7 @@
 // import react
 import React, { Component } from 'react';
-
-// import axios for server requests
 import axios from 'axios';
-
 import Student from './Student'
-
 import '../../css/Students.scss'
 
 

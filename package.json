@@ -34,7 +34,7 @@
     "mongoose": "^6.2.0",
     "multer-gridfs-storage": "^5.0.2",
     "react": "^17.0.2",
-    "react-bootstrap": "^2.1.2",
+    "react-bootstrap": "^2.2.3",
     "react-datepicker": "^4.6.0",
     "react-dom": "^17.0.2",
     "react-filepond": "^7.1.1",

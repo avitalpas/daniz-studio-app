@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NewUser from './NewUser';
 import SettingsHeader from './SettingsHeader';
+import '../../css/Settings.scss'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Table } from 'react-bootstrap'
 
 export default function Users() {
 
@@ -24,10 +27,10 @@ export default function Users() {
 
         return users.map(user => {
             return (
-                <div>
-                    <p>{user.name}</p>
-                    <p>{user.email}</p>
-                </div>
+                <tr>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                </tr>
             )
         })
     }
@@ -44,7 +47,15 @@ export default function Users() {
             <SettingsHeader header='משתמשי מערכת' addNew={showNewUserForm}/>
 
             {/* users list */}
-            {usersList()}
+            <Table hover size='sm'>
+                <thead>
+                    <th>תיאור</th>
+                    <th>מייל</th>
+                </thead>
+                <tbody>
+                    {usersList()}
+                </tbody>
+            </Table>
 
             {/* new user */}
             <NewUser />
