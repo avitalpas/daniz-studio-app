@@ -1,6 +1,7 @@
 # Daniz Studio app - client side ( React )
 This is a private project for Daniz Music Studio, made by Avital Pasternak
-Will be sonn deployed to Heroku :) 
+
+Will be soon deployed to Heroku :) 
 
 ## 1 - Run server side - [click here](https://github.com/avitalpas/daniz-studio-app-server)
 ## 2 - Run client side
