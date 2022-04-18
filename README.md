@@ -5,15 +5,19 @@ Will be soon deployed to Heroku :)
 
 ## 1 - Run server side - [click here](https://github.com/avitalpas/daniz-studio-app-server)
 ## 2 - Run client side
+Clone repository
 ```
 git clone https://github.com/avitalpas/daniz-studio-app.git
 ```
+Go to repository folder
 ```
 cd daniz-studio-app
 ```
+Install node modules
 ```
 npm i
 ```
+Start react app
 ```
 npm start
 ```
