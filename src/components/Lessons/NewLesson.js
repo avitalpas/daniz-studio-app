@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import '../../css/Global.scss'
+import { useParams } from "react-router-dom";
 
-export default function NewLesson() {
+export default function NewLesson(props) {
 
     const [studentID, setStudentID] = useState('')
     const [musicID, setMusicID] = useState('')
@@ -12,11 +13,26 @@ export default function NewLesson() {
     const [students, setStudents] = useState([])
     const [musics, setMusics] = useState([])
     const [isMounted, setIsMounted] = useState(false)
+    const [currentStudent, setCurrentStudent] = useState()
+
+    const { id } = useParams()
 
     useEffect(() => {
         if( !isMounted ){
             getSortedStudents()
             getSorteMusic()
+
+            if( id != null ){
+                axios.get('http://localhost:5000/students/' + id)
+                    .then(response => {
+                        setCurrentStudent(response.data)
+                        console.log(response.data)
+                    })
+                    .catch(error => console.log(error))
+            } else {
+                setCurrentStudent(null)
+            }
+
             setIsMounted(true)
         }
     })
@@ -91,13 +107,20 @@ export default function NewLesson() {
         axios.post('http://localhost:5000/lessons/new', lesson)
             .then(res => console.log(res.data))
 
-        window.location = '/lessons'
+        window.location = '/home'
     }
 
     function studentsOptions() {
-        return students.map(student => {
-            return <option key={student._id} value={student._id}>{student.name}</option>
-        })
+        if(currentStudent == null ){
+            console.log('no student selected')
+            return students.map(student => {
+                return <option key={student._id} value={student._id}>{student.name}</option>
+            })
+        } else {
+            console.log('got student')
+            return <option key={currentStudent._id} value={currentStudent._id} selected>{currentStudent.name}</option>
+
+        }
     }
 
     function musicsOptions() {

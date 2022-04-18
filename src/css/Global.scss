@@ -34,11 +34,13 @@ body{
 .form-float{
     max-width: 600px;
     margin: auto;
+    margin-top: 150px !important;
     box-shadow: 0 0 10px rgba(128, 128, 128, 0.65);
     padding: 0;
     border-radius: 2px;
     justify-items: center;
     animation: slide-in-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    transition: .3 ease-in-out;
 
     p{
       margin: 10px;
@@ -111,5 +113,7 @@ body{
 
 
 @media only screen and (max-width: 600px) {
-
+  .form-float{
+    margin-top: 70px !important;
+  }
 }

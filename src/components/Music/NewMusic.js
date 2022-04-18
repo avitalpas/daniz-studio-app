@@ -1,26 +1,21 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-// filepond css
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-import 'filepond/dist/filepond.min.css';
-// filepond elements
-// import { FilePond, registerPlugin } from 'react-filepond';
-// import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
-
-// registerPlugin(FilePondPluginFileEncode);
-
 export default function NewMusic() {
 
     const [newMusic, setNewMusic] = useState({
         name: '',
-        sheetFile: ''
+        difficulty: ''
     })
-    // const [sheetFile, setSheetFiles] = useState([])
-    // const [pond, setPond] = useState('')
 
     function onChangeName(e) {
         let tempMusic = newMusic
         tempMusic.name = e.target.value
+        setNewMusic(tempMusic)
+    }
+
+    function onChangeDifficulty(e) {
+        let tempMusic = newMusic
+        tempMusic.difficulty = e.target.value
         setNewMusic(tempMusic)
     }
 
@@ -50,27 +45,20 @@ export default function NewMusic() {
                     />
                 </div>
 
-                {/* sheet file */}
-                {/* <div className='form-group'>
-                    <p>תווים</p>
-
-                    <FilePond
-                        ref={(ref) => (setPond(ref))}
-                        files={sheetFile}
-                        server='http://localhost:5000/filepond'
-                        allowMultiple={true}
-                        maxFiles={1}
-                        required={false}
-                        labelIdle='גרור או  <span class="filepond--label-action">בחר קובץ</span>'
-                        onupdatefiles={(fileItems) => {
-                            console.log('uploaded file')
-                            let tempMusic = newMusic
-                            let sheetFiles = fileItems.map((fileItem) => fileItem.file)
-                            tempMusic.sheetFile = sheetFiles[0]
-                            setNewMusic(tempMusic)
-                        }}
-                    ></FilePond>
-                </div> */}
+                {/* diffuculty */}
+                <div className='form-group'>
+                    <select name='difficulty'
+                        className='form-control'
+                        onChange={onChangeDifficulty}
+                        placeholder='רמת קושי'
+                        required
+                    >
+                        <option value="" disabled selected>רמת קושי:</option>
+                        <option value="קל">קל</option>
+                        <option value="בינוני">בינוני</option>
+                        <option value="קשה">קשה</option>
+                    </select>
+                </div>
 
                 {/* submit */}
                 <button type='submit'

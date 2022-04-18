@@ -15,8 +15,7 @@
         // students
         axios.get('http://localhost:5000/students')
           .then(response => {
-            
-
+          
             response.data.sort((a, b) => {
               let fa = a.name
               let fb = b.name
@@ -84,17 +83,23 @@
 
     // returns today's lessons list
     function todaysLessonsList() {
+
       return lessons.map((lesson, key) => {
-
-        let studentName = students.find(student => student._id == lesson.studentID).name
-
+        
         if(isLessonToday(lesson.date)){
+
+          let student = students.find(student => student._id == lesson.studentID)
+
+          if(student == undefined){
+            student = students.find(student => student._id == lesson.studentID)
+          }
+
           return (
             <div className='lesson-div' key={key}>
               <p className='lesson-time'>{getDateTimeFormat(lesson.date)}</p>
   
               <div className="lesson-details">
-                <h6>{studentName}</h6>
+                <h6>{student.name}</h6>
                 <p>{lesson.description}</p>
 
               </div>
@@ -144,7 +149,9 @@
 
           <div className="lessons-list">
             {todaysLessonsList()}
-
+            <br/>
+            <br/>
+            <p dir='rtl'>נגמרו השיעורים להיום 🤗</p>
           </div>
         </div>
       </div>

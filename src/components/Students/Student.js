@@ -7,20 +7,7 @@ import axios from 'axios';
 import '../../css/Student.scss'
 
 // student component
-export default function Student(props) {
-    const [customFields, setCustomFields] = useState([])
-    const [isMounted, setIsMounted] = useState(false)
-        
-    useEffect(()=>{
-        if (!isMounted) {
-            axios.get('http://localhost:5000/customfield')
-                .then(response => {
-                    setCustomFields(response.data)
-                    setIsMounted(true)
-                })
-                .catch(error => console.log(error))
-        }
-    })
+export default function Student(props) {        
 
     // check and get user contacts
     function getStudentContacts() {
@@ -50,21 +37,6 @@ export default function Student(props) {
 
             {/* student actions */}
             <td className='student-actions'>
-                
-
-                {/* delete student */}
-                {/* <div className="actionLink delIcon">
-                    <a href='#' onClick={() => { props.deleteStudent(props.student._id) }} title='מחיקת תלמיד'>
-                        <i className="fas fa-trash-alt del-icon"></i>
-                    </a>
-                </div> */}
-
-                {/* edit student */}
-                {/* <div className="actionLink">
-                    <Link to={'/students/edit/' + props.student._id} title='עריכת תלמיד'>
-                        <i className="far fa-edit"></i>
-                    </Link>
-                </div> */}
 
                 {/* new lesson */}
                 <div className="actionLink">

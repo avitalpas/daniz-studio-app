@@ -1,71 +1,202 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>הסטודיו של דני | התחברות</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <link rel="icon" type="image/x-icon"
+    href="https://lh3.googleusercontent.com/fife/AAWUweXBdyAMENt2snb-k4VvTdH6YdxsEg3IQKLYrfwai47yDP4pOidmOGIquuXzWkmlZBr_kcTUUhH4e3kBmgkOTmCjkS7cMaXFJE7J96TfgN2UJ5KWkR2CyCahc4mrxiXjyg2W1VaGx2carI9hR15s2qF2hfVjkZD5wlljHQiR0c9rSl_7zVa7mEM6JWmp0Q2kHW4Bd93zQnAE_YPLQ9kx3Kz2MSsuIE8dQlQqlZ0-WjGqhwNs1GkOTuJGLI_Jmc-fOvWw8JpTr6Tv_cPc7TjCashPrJVCrAT-YJo8rjmpET6qA1lJ75btEjhrauecCiY9uIe94II1-RLH-SZkKEzh0CEM9SJNBHaEialVsW2AFB3KIgKx1OdB2yo2tjcxLAuei6kY0mVnXse5rsI3R_L86dc-rjvF5rEfMRnjQbDrMnHLpiZjReNtv26GA-jDDVAc8zIvhefzF6FxDB69b45YU6MqnkBbGpRGOAJavp9OpkCx5hN3EZ_TVIXe-dmtJQmTJHT20pAuXba_yAwuSK3Do03cBnzeGEZgov1Jf5DmF4UU6ZgVoWES_5kpog4gdcUF_ePxmPOF8zHmJ8kzZkCHnpClPL4C32LOKepFnGu7Lh8U-6hFtCkAlMz_n1gXdyjBFW0db6ThbCtkXMQx7zjGETE8r-rdvZg8qg4EwjAYwpSPmGZQAkm4BNl6xLn00ISX2cZDIJ4fBwJm5OCfCHh1ILrkiaf10vW_8YpdMf3J2PX4ST_W8ge6BUzDDf9ZhvQy1XJ0lWx33SXf6ekSemFzPgHK4iSY1agft_Enp2nGYZElirICgviYgh0qRrXOvz5tpOriUmy13vh3C89r7f8LHdHF_0qKDb3XbS6IAwUinsJ3qhCa-swkPAVpCMs8LCGWV29o-KkjtB1bbotIQaQaYd3DUpSxgOivUlg=w1919-h892">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+<style>
+  body {
+    font-family: 'Rubik', sans-serif;
+    height: 100%;
+    background-image: url('https://static1.s123-cdn-static-a.com/uploads/584813/2000_5985bda1efbbc_filter_61eb09bd51e52.png');
+  }
+
+  .login-container {
+    position: relative;
+    height: 100%;
+  }
+
+  .login-box {
+    margin: 100px auto;
+    width: 400px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.872);
+    box-shadow: 0px 5px 5px #ccc;
+    border-radius: 7px;
+    border-top: 1px solid #e9e9e9;
+  }
+
+  .login-header {
+    text-align: center;
+  }
+
+  .login-header img {
+    width: 200px;
+  }
+
+  #error-message {
+    display: none;
+    white-space: break-spaces;
+  }
+
+  #btn-google {
+    background-color: white;
+    color: black;
+    border: .5px solid rgba(128, 128, 128, 0.658);
+    transition: .2s ease-in-out;
+    font-size: 16px;
+  }
+
+  #btn-google:hover {
+    box-shadow: 1px 1px 7px rgba(128, 128, 128, 0.169);
+
+  }
+
+  #btn-google img {
+    width: 30px;
+  }
+
+
+  @media only screen and (max-width: 900px) {
+    .login-box{
+      width: 400px;
+      margin: 100px auto;
+    }
+  }
+</style>
+
 <body>
+  <div class="login-container">
+    <div class="login-box">
+      <div class="login-header">
+        <img
+          src="https://lh3.googleusercontent.com/fife/AAWUweUinepHrRwXiArAEXCKYXIJpQ6fmt6zHWPzSVJ3h0k8AJzoib4donCJi_IaMAsX9S326Ch6tuX1pny4raISrfDRJSSrJZ0jVyHr-SFaMW-LNagaT8lU1zJ4P_4IqWgV_tRGrxpAsCl3jrgEnmgPa2nUVKEyJiQj_f9Yjeyp-11PiHIV95DGonOEpHaCtdaX2geieLwzo56A13jgG72Riob1DHJI9Q06hrSGPVnGsks5XtVLzIhMBeB_XymsjJ_qk9jnUdrEgz_Og99i19wMjfTlkSyvG5KZqUjubVWxvqiDhXPclRZb4nMJmIKf5Rh3E7CkJKpWr9r87m9ZwpoWf2eYNjo7AdmXG8nC_t2ZJikFh7jXIKPRa8uUJZT7Li1Pefp0zAtBYwdia8baVtkbTXYuu1YN_YMLQEQOssePqRQbZvAuu9ESCF5amdv6REZf3j_9YpnZb1bRsIcenDaekpKbTaGQcCsYWDuLMK7C4VvxpD8PBPOrSRdg0qIlFVBGYZ1F9WHRkHs4PIASu7jAN3hb2z1PK0VrxYVy1lI64XZ1AMXubblqeCHJrZ9n9DzKKbtRwAguOaidCtAEj6VU_vjxx580NbF8bKfLBq8ujN9i8rI7EEt5_q0M7KgLx1WIMtDNGb2zG-oZjwBfHLj-nbo3LFiys0aF5B8rbh8Yf4RSMzuhH1wn4DJwIAdcYB18hCH9pxqbLvISGWg3Ykv1WG5OXeAPUB8N9sn-idrYJxOD1etGIQytFzRwza3YSy8dKCwQz-QDu9HJH0qsAhsJxPjrWTOrUmmESMN_-MprTmoamwDi-IJkPtgNeP4U8oaCLfqLxm8jWa1FZm6ZiDuQYlIrIR0i7ic9JnqCMauTfNhO10ozkufpIsvjlEKqgrW7ZJksrXDdwYf7hvLKnOi8OcY7hl438x6m_5w=w1177-h858" />
+      </div>
 
-  <script src="https://cdn.auth0.com/js/lock/11.32/lock.min.js"></script>
+      <!-- login with Google -->
+      <button dir="rtl" type="button" id="btn-google" class="btn btn-default btn-block">
+        <img
+          src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
+          alt="">
+        התחבר עם גוגל
+      </button>
+
+      <hr>
+      <!-- error message -->
+      <div id="error-message" class="alert alert-danger"></div>
+
+      <!-- login form -->
+      <form onsubmit='return false;' method="post" dir="rtl">
+
+        <!-- login user password -->
+
+        <!-- mail input -->
+        <div class="form-group">
+          <label for="name">שם משתמש</label>
+          <input type="email" class="form-control" id="email" placeholder="כתובת המייל שלך">
+        </div>
+
+        <!-- password input -->
+        <div class="form-group">
+          <label for="name">סיסמא</label>
+          <input type="password" class="form-control" id="password" placeholder="הסיסמא שלך">
+        </div>
+
+        <!-- captcha -->
+        <div class="captcha-container form-group"></div>
+
+        <!-- login button -->
+        <button type="submit" id="btn-login" class="btn btn-primary btn-block">
+          התחבר
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.auth0.com/js/auth0/9.18/auth0.min.js"></script>
+  <script src="https://cdn.auth0.com/js/polyfills/1.0/object-assign.min.js"></script>
   <script>
-    // Decode utf8 characters properly
-    var config = JSON.parse(decodeURIComponent(escape(window.atob('@@config@@'))));
-    config.extraParams = config.extraParams || {};
-    var connection = config.connection;
-    var prompt = config.prompt;
-    var languageDictionary;
-    var language;
+    window.addEventListener('load', function () {
 
-    if (config.dict && config.dict.signin && config.dict.signin.title) {
-      languageDictionary = { title: config.dict.signin.title };
-    } else if (typeof config.dict === 'string') {
-      language = config.dict;
-    }
-    var loginHint = config.extraParams.login_hint;
-    var colors = config.colors || {};
+      var config = JSON.parse(
+        decodeURIComponent(escape(window.atob('@@config@@')))
+      );
 
-    // Available Lock configuration options: https://auth0.com/docs/libraries/lock/v11/configuration
-    var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
-      auth: {
-        redirectUrl: config.callbackURL,
-        responseType: (config.internalOptions || {}).response_type ||
-          (config.callbackOnLocationHash ? 'token' : 'code'),
-        params: config.internalOptions
-      },
-      configurationBaseUrl: config.clientConfigurationBaseUrl,
-      overrides: {
-        __tenant: config.auth0Tenant,
-        __token_issuer: config.authorizationServer.issuer
-      },
-      assetsUrl:  config.assetsUrl,
-      allowedConnections: connection ? [connection] : null,
-      rememberLastLogin: !prompt,
-      language: language,
-      languageBaseUrl: config.languageBaseUrl,
-      languageDictionary: languageDictionary,
-      theme: {
-        //logo:            'YOUR LOGO HERE',
-        primaryColor:    colors.primary ? colors.primary : 'green'
-      },
-      prefill: loginHint ? { email: loginHint, username: loginHint } : null,
-      closable: false,
-      defaultADUsernameFromEmailPrefix: false
+      var leeway = config.internalOptions.leeway;
+      if (leeway) {
+        var convertedLeeway = parseInt(leeway);
+
+        if (!isNaN(convertedLeeway)) {
+          config.internalOptions.leeway = convertedLeeway;
+        }
+      }
+
+      var params = Object.assign({
+        overrides: {
+          __tenant: config.auth0Tenant,
+          __token_issuer: config.authorizationServer.issuer
+        },
+        domain: config.auth0Domain,
+        clientID: config.clientID,
+        redirectUri: config.callbackURL,
+        responseType: 'code'
+      }, config.internalOptions);
+
+      var webAuth = new auth0.WebAuth(params);
+      var databaseConnection = 'Username-Password-Authentication';
+      var captcha = webAuth.renderCaptcha(
+        document.querySelector('.captcha-container')
+      );
+
+      function login(e) {
+        e.preventDefault();
+        var button = this;
+        var username = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        button.disabled = true;
+        webAuth.login({
+          realm: databaseConnection,
+          username: username,
+          password: password,
+          captcha: captcha.getValue()
+        }, function (err) {
+          if (err) displayError(err);
+          button.disabled = false;
+        });
+      }
+
+      function loginWithGoogle() {
+        webAuth.authorize({
+          connection: 'google-oauth2'
+        }, function (err) {
+          if (err) displayError(err);
+        });
+      }
+
+      function displayError(err) {
+        captcha.reload();
+        var errorMessage = document.getElementById('error-message');
+        errorMessage.innerHTML = err.policy || err.description;
+        errorMessage.style.display = 'block';
+      }
+
+      document.getElementById('btn-login').addEventListener('click', login);
+      document.getElementById('btn-google').addEventListener('click', loginWithGoogle);
     });
-
-    if(colors.page_background) {
-      var css = '.auth0-lock.auth0-lock .auth0-lock-overlay { background: ' +
-                  colors.page_background +
-                ' }';
-      var style = document.createElement('style');
-
-      style.appendChild(document.createTextNode(css));
-
-      document.body.appendChild(style);
-    }
-
-    lock.show();
   </script>
 </body>
+
 </html>

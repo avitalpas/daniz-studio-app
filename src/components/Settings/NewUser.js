@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 export default function NewUser() {
+
+    // local user
     const [user, setUser] = useState({
         name:'',
         email:''
     })
 
-    const onUserNameChange = (e) => {
+    // change local user name on form name change
+    function onUserNameChange(e){
         
         let tempUser = user
         tempUser.name = e.target.value
@@ -15,29 +18,26 @@ export default function NewUser() {
         setUser(tempUser)
     }
 
-    const onUserMailChange = (e) => {
+    // change local user mail on form name change
+    function onUserMailChange(e){
         let tempUser = user
         tempUser.email = e.target.value
 
         setUser(tempUser)
     }
 
-
-    const onUserSubmit = (e) => {
+    // handel user submit
+    function onUserSubmit(e){
         e.preventDefault()
-
-        console.log('submit new user')
-        console.log(user)
 
         axios.post('http://localhost:5000/users/new', user)
         .then(res => console.log(res.data))
 
         window.location = '/settings'
-
-        alert('tnx')
     }
 
-    const hideNewUserForm = () => {
+    // hide new user form on exit
+    function hideNewUserForm(){
         var newUserForm = document.querySelector('#new-user-form')
         newUserForm.style.display = 'none'
     }

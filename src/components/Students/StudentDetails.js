@@ -12,7 +12,6 @@ export default function StudentDetails(props) {
 
   const [student, setStudent] = useState({})
   const [isMounted, setIsMounted] = useState(false)
-  const [customFields, setCustomFields] = useState([])
   const { id } = useParams()
 
   useEffect(() => {
@@ -24,13 +23,7 @@ export default function StudentDetails(props) {
         })
         .catch(error => console.log(error))
 
-      axios.get('http://localhost:5000/customfield')
-        .then(response => {
-          setCustomFields(response.data)
-          console.log(customFields);
-          setIsMounted(true)
-        })
-        .catch(error => console.log(error))
+      setIsMounted(true)
     }
   })
 
@@ -43,13 +36,13 @@ export default function StudentDetails(props) {
       <h3>פרטי תלמיד</h3>
 
       {/* name */}
-      <StudentHeader student={student}/>
+      <StudentHeader student={student} />
 
       {/* actions */}
       <StudentDetailsActions student={student} />
 
-      {/* details */}
-      <StudentFullDetails student={student} customFields={customFields} />
+      {/* more */}
+      <p>כאן יופיעו שיעורים עתידיים ופרטים נוספים :)</p>
 
     </div>
   )

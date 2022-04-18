@@ -39,16 +39,12 @@ const lessonsRouter = require('./routes/lessons.back.route')
 const studentsRouter = require('./routes/students.back.route')
 const usersRouter = require('./routes/users.back.route')
 const musicRouter = require('./routes/music.back.route')
-const customFieldRouter = require('./routes/CustomField.back.route')
-const customFieldDataRouter = require('./routes/customFieldData.back.route')
 const filepondRouter = require('./routes/filepond.back.route')
 
 app.use('/lessons', lessonsRouter)
 app.use('/students', studentsRouter)
 app.use('/users', usersRouter)
 app.use('/musics', musicRouter)
-app.use('/customfield', customFieldRouter)
-app.use('/customfielddata', customFieldDataRouter)
 app.use('/filepond', filepondRouter)
 
 app.listen(port, () => {

@@ -7,7 +7,10 @@ const musicSchema = new Schema({
         type: String,
         require: true
     },
-    sheetsID: { type: Buffer }
+    difficulty: {
+        type: String,
+        require: true
+    }
 },{
     timestamps: true
 })

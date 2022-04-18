@@ -6,6 +6,7 @@ $main_color: #1573b6;
 #login-page{
     text-align: center;
     padding: 200px;
+    padding-top: 150px;
     display: flex;
     flex-direction: column;
     width: max-content;
@@ -72,3 +73,16 @@ $main_color: #1573b6;
         color: $main_color;
       }
 }
+
+
+@media only screen and (max-width: 600px) {
+    #login-page{
+        padding: 0;
+        padding-top: 100px;
+
+        #main-logo{
+            width: 200px;
+            height: auto;
+        }
+    }
+  }

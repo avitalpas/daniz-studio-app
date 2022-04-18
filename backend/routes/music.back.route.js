@@ -13,7 +13,8 @@ router.route('/new').post((req,res)=>{
     console.log(`req: ${JSON.stringify(req.body)}`);
 
     const newMusic = new Music({
-        name: req.body.name
+        name: req.body.name,
+        difficulty: req.body.difficulty
     })
 
     newMusic.save()

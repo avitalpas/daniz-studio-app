@@ -1,7 +1,15 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 export default function StudentDetailsActions(props) {
+
+
+    function deleteStudent(id) {
+        axios.delete('http://localhost:5000/students/' + id)
+            .then(window.location = '/students')
+    }
+
     return (
         <div className="action-links">
 
@@ -30,7 +38,7 @@ export default function StudentDetailsActions(props) {
 
             {/* delete */}
             <div className="actions-link delIcon">
-                <a href='#' onClick={() => { props.deleteStudent(props.props.student._id) }} title='מחיקת תלמיד'>
+                <a href='#' onClick={() => { deleteStudent(props.student._id) }} title='מחיקת תלמיד'>
                     <i className="fas fa-trash-alt del-icon"></i>
                 </a>
             </div>

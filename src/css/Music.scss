@@ -3,3 +3,14 @@
     margin: auto;
     margin-top: 100px;
 }
+
+.music-row{
+    .action-links{
+        display: flex;
+
+        a{
+            padding: 5px;
+            color: black;
+        }
+    }
+}

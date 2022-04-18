@@ -1,46 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-import EditCustomFieldData from './EditCustomFieldData';
 import '../../css/Global.scss'
 
 export default function EditStudent() {
 
     const [student, setStudent] = useState({});
     const [isMounted, setIsMounted] = useState(false)
-    const [customFields, setCustomFields] = useState([])
-    const [customFieldsData, setCustomFieldsData] = useState([])
-
 
     const { id } = useParams()
 
     useEffect(() => {
         if (!isMounted) {
 
-            // get students
+            // get student
             axios.get('http://localhost:5000/students/' + id)
                 .then(response => {
                     setStudent(response.data)
-                })
-                .catch(error => console.log(error))
-
-            // get custom fields
-            axios.get('http://localhost:5000/customfield')
-                .then(response => {
-                    setCustomFields(response.data)
-                })
-                .catch(error => console.log(error))
-
-            // get custom fields
-            axios.get('http://localhost:5000/customfielddata')
-                .then(response => {
-                    setCustomFieldsData(response.data)
                     setIsMounted(true)
                 })
                 .catch(error => console.log(error))
+
         }
     })
-
 
     function onChangeName(e) {
 
@@ -71,19 +53,6 @@ export default function EditStudent() {
         window.location = '/students'
     }
 
-    function updateCustomField(tempField){
-
-        let searchIfExists = customFieldsData.find( el => el.fieldID == tempField.fieldID)
-    }
-
-    function getCustomFields() {
-        return customFields.map(field => {
-            return (
-                <EditCustomFieldData updateCustomField={updateCustomField} field={field} customFieldsData={customFieldsData} studentID={student._id} key={field._id}/>
-            )
-        })
-    }
-
     return (
         <div id="edit-student" className='bodyDiv form-float'>
             <h3>עריכת תלמיד</h3>
@@ -109,9 +78,6 @@ export default function EditStudent() {
                         value={student.mobile}
                         onChange={onChangeMobile} />
                 </div>
-
-                {/* custom fields */}
-                {getCustomFields()}
 
                 {/* submit */}
                 <button type='submit'>עדכן תלמיד</button>

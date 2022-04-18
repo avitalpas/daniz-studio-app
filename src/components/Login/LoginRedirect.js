@@ -12,12 +12,15 @@ export default function LoginRedirect() {
         <div id='login-page'>
             <img id='side-logo' src={NavbarLogo} />
             <img id='main-logo' src={LogoTrans} />
-            <div className="text">
-                <h4>משתמש אינו מחובר או שאינו זוהה במערכת</h4>
-                <h4>לחץ על הכפתור מטה למעבר לעמוד ההתחברות</h4>
+            <br />
+            <br />
+            <div className="text" dir='rtl'>
+                <h4>🎼 ברוכים הבאים לסטודיו למוזיקה של דני 🎼</h4>
             </div>
-            <button onClick={() => loginWithRedirect()}><span>התחברות</span></button>
+            <button onClick={() => loginWithRedirect()}><span>לחץ להתחברות</span></button>
             <img id='bottom-obj' src={BottomObject} />
+            <br />
+            <a href="https://www.danizstudio.co.il/">בקר באתר הבית</a>
         </div>
     )
 }
