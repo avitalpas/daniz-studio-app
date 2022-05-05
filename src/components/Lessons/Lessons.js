@@ -52,8 +52,6 @@ export default function Lessons() {
                   count++
                 }
 
-                console.log(student)
-
                 let event = {
                   id: lesson._id,
                   title: student.name,

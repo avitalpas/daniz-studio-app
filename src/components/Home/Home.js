@@ -1,159 +1,121 @@
-  import React, { useEffect, useState } from 'react'
-  import '../../css/Global.scss'
-  import '../../css/Home.scss'
-  import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import '../../css/Global.scss'
+import '../../css/Home.scss'
+import axios from 'axios';
+import Total from './Total';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import FullCalendar from '@fullcalendar/react'
+import listPlugin from '@fullcalendar/list';
 
-  export default function Home() {
+export default function Home() {
 
-    const [students, setStudents] = useState([])
-    const [lessons, setLessons] = useState([])
-    const [musics, setMusics] = useState([])
-    const [isMounted, setIsMounted] = useState(false)
+  const [students, setStudents] = useState([])
+  const [lessons, setLessons] = useState([])
+  const [events, setEvents] = useState([])
+  const [musics, setMusics] = useState([])
+  const [isMounted, setIsMounted] = useState(false)
 
-    useEffect(() => {
-      if (!isMounted) {
-        // students
-        axios.get('http://localhost:5000/students')
-          .then(response => {
+  useEffect(() => {
+    if (!isMounted) {
+
+      // students
+      axios.get('http://localhost:5000/students')
+        .then(response => {
+
           
-            response.data.sort((a, b) => {
-              let fa = a.name
-              let fb = b.name
+          response.data.sort((a, b) => { // sort students ( will be moved to saparete function)
+            let fa = a.name
+            let fb = b.name
 
-              if (fa < fb) return -1
-              if (fa > fb) return 1
-              else return 0
+            if (fa < fb) return -1
+            if (fa > fb) return 1
+            else return 0
+          })
+
+          setStudents(response.data)
+          let tempStudents = response.data // will be used for lessons
+
+          // lessons
+          axios.get('http://localhost:5000/lessons')
+            .then(response => {
+              let tempEvents = []
+              response.data.forEach(lesson => {
+
+                let student = tempStudents.find(student => student._id == lesson.studentID)
+                let count = 0
+                while (student == undefined && count < 5) {
+                  student = tempStudents.find(student => student._id == lesson.studentID)
+                  count++
+                }
+
+                let event = {
+                  id: lesson._id,
+                  title: student.name,
+                  start: lesson.date,
+                  extendedProps: {
+                    description: lesson.description
+                  }
+                }
+
+                tempEvents.push(event)
+              })
+
+              setEvents(tempEvents)
+              setLessons(response.data)
+
             })
+            .catch(error => console.log(error))
+        })
+        .catch(error => console.log(error))
 
-            setStudents(response.data)
-          })
-          .catch(error => console.log(error))
 
-        // lessons
-        axios.get('http://localhost:5000/lessons')
-          .then(response => {
-            // sort by date and time
-            const sortedLessons = sortLessons(response.data)
-            console.log(sortedLessons)
-            setLessons(response.data)
-          })
-          .catch(error => console.log(error))
 
-        // musics
-        axios.get('http://localhost:5000/musics')
-          .then(response => {
+      // musics
+      axios.get('http://localhost:5000/musics')
+        .then(response => {
 
-            setMusics(response.data)
-          })
-          .catch(error => console.log(error))
+          setMusics(response.data)
+        })
+        .catch(error => console.log(error))
 
-        setIsMounted(true)
-      }
-
-    })
-
-    // sort lessons by date
-    function sortLessons(lessonsList){
-      
-      // lessonsList.map(lesson => console.log( lessons.date.get getDateTimeFormat(lesson.date)))
+      setIsMounted(true)
     }
 
-    // get lesson time format for display
-    function getDateTimeFormat(date) {
+  })
 
-      let curDate = new Date(date)
-      let formatedDate = curDate.getDate() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getFullYear()
-      let formatedMinutes = curDate.getMinutes()
-      if (formatedMinutes.toString().length < 2) formatedMinutes += '0'
-      let weekDayName = curDate.toLocaleDateString('he-IL', { weekday: 'short' })
-      let formatedTime = curDate.toLocaleString('he-IL', { hour: 'numeric', hour12: false }) + ':' + formatedMinutes
+  const headerToolbar = {
+    start: '',
+    center: '',
+    end: ''
+  }
 
-      // return formatedDate + ' ' + weekDayName + ' ' + formatedTime
-      return formatedTime
-    }
+  const options = {
+    listDaySideFormat: true
+  }
 
-    // checks if current lessons is today
-    function isLessonToday(date){
-      let lessonDate = new Date(date)
-      let today = new Date()
+  return (
+    <div className='bodyDiv'>
+      <h3>בית</h3>
 
-      if((today.getFullYear() ==  lessonDate.getFullYear()) && (today.getMonth() ==  lessonDate.getMonth()) && (today.getDate() == lessonDate.getDate()) ) return true
-      else return false
-    }
+      {/* total row */}
+      <Total students={students} lessons={lessons} musics={musics}/>
 
-    // returns today's lessons list
-    function todaysLessonsList() {
+      {/* today's lessons */}
+      <div className="today-lessons">
+        <h5>:השיעורים שלך להיום</h5>
 
-      return lessons.map((lesson, key) => {
-        
-        if(isLessonToday(lesson.date)){
-
-          let student = students.find(student => student._id == lesson.studentID)
-
-          if(student == undefined){
-            student = students.find(student => student._id == lesson.studentID)
-          }
-
-          return (
-            <div className='lesson-div' key={key}>
-              <p className='lesson-time'>{getDateTimeFormat(lesson.date)}</p>
-  
-              <div className="lesson-details">
-                <h6>{student.name}</h6>
-                <p>{lesson.description}</p>
-
-              </div>
-            </div>
-          )
-        }
-      });
-    }
-
-    return (
-      <div className='bodyDiv'>
-        <h3>בית</h3>
-
-        {/* total row */}
-        <div className="home-total">
-
-          <h5>פעילות עד היום</h5>
-
-          <div className="total-row">
-
-            {/* total students */}
-            <div className="total-div">
-              <p>סה"כ תלמידים</p>
-              <p className='amount'>{students.length}</p>
-            </div>
-
-            {/* total lessons */}
-            <div className="total-div">
-              <p>סה"כ שיעורים</p>
-              <p className='amount'>{lessons.length}</p>
-            </div>
-
-            {/* total musics */}
-            <div className="total-div">
-              <p>סה"כ יצירות</p>
-              <p className='amount'>{musics.length}</p>
-            </div>
-
-          </div>
-
-
-        </div>
-
-        {/* today's lessons */}
-        <div className="today-lessons">
-          <h5>רשימת השיעורים שלך להיום</h5>
-
-          <div className="lessons-list">
-            {todaysLessonsList()}
-            <br/>
-            <br/>
-            <p dir='rtl'>נגמרו השיעורים להיום 🤗</p>
-          </div>
+        <div className="lessons-list">
+          <FullCalendar
+            plugins={[listPlugin]}
+            initialView='listDay'
+            height='300px'
+            events={events}
+            headerToolbar={headerToolbar}
+            listDaySideFormat={options}
+          />
         </div>
       </div>
-    )
-  }
+    </div>
+  )
+}

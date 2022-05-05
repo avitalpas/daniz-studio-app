@@ -3,16 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Music(props) {
     return (
-        <tr className='music-row'>
-
-            {/* music name */}
-            <td>{props.music.name}</td>
-
-            {/* difficulty */}
-            <td>{props.music.difficulty}</td>
-
-            {/* music sheet */}
-            <td>אין תווים</td>
+        <tr className='music-row'>         
 
             {/* music actions */}
             <td className='action-links'>
@@ -31,6 +22,15 @@ export default function Music(props) {
                     </a>
                 </div>
             </td>
+
+            {/* music sheet */}
+            <td>אין תווים</td>
+
+            {/* difficulty */}
+            <td>{props.music.difficulty}</td>
+
+             {/* music name */}
+             <td>{props.music.name}</td>
         </tr>
     )
 }
