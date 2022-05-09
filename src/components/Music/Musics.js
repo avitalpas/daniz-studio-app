@@ -38,9 +38,11 @@ export default function Musics() {
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th>שם היצירה</th>
-            <th>רמת קושי</th>
+            <th>פעולות</th>
             <th>תווים</th>
+            <th>רמת קושי</th>
+            <th>יוצר</th>
+            <th>שם</th>
           </tr>
         </thead>
         <tbody>

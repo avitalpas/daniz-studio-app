@@ -23,7 +23,6 @@ export default function Home() {
       axios.get('http://localhost:5000/students')
         .then(response => {
 
-          
           response.data.sort((a, b) => { // sort students ( will be moved to saparete function)
             let fa = a.name
             let fb = b.name
@@ -84,12 +83,14 @@ export default function Home() {
 
   })
 
+  // full calendar header toolbar options - empty
   const headerToolbar = {
     start: '',
     center: '',
     end: ''
   }
 
+  // full calendar global options
   const options = {
     listDaySideFormat: true
   }

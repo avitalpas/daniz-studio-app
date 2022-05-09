@@ -7,6 +7,7 @@ import '../../css/Students.scss'
 export default function Students(props) {
 
   const [students, setStudents] = useState([])
+  const [originStudents, setOriginStudents] = useState([])
 
   useEffect(() => {
     axios.get('http://localhost:5000/students')
@@ -35,11 +36,9 @@ export default function Students(props) {
 
   function onStudentSearchChange(e) {
     if (e.target.value == '') {
-      this.setState({
-        students: this.state.tempStudents
-      })
+      setStudents(originStudents)
     } else {
-      this.filterStudents(this.state.tempStudents, e.target.value)
+      filterStudents(students, e.target.value)
     }
   }
 
@@ -48,7 +47,7 @@ export default function Students(props) {
     let tempArr = array
     tempArr = tempArr.filter(stu => stu.name.includes(string))
 
-    this.setState({ students: tempArr })
+    setStudents(tempArr)
   }
 
   return (

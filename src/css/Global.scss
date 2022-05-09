@@ -9,7 +9,10 @@ $search_gray: #ECECEC;
 body{
   font-family: 'Rubik', sans-serif;
 
-    
+  #js-licensing{
+    display: none !important;
+  }
+
   h3{
     font-size: 25px;
     font-weight:600;

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
 
-// import axios
-import axios from 'axios';
-
 import '../../css/Student.scss'
 
 // student component

@@ -53,20 +53,10 @@ export default function NewMusic() {
 
     function onChangeDifficulty(e) {
         let tempMusic = newMusic
-        tempMusic.difficulty = e.target.value
-        setNewMusic(tempMusic)
-    }
+        let difficultyLabel = difficulties.find(el => el.value == e.target.value)
+        
+        tempMusic.difficulty = difficultyLabel.label
 
-    
-    function onChangeNoteless(e) {
-        let tempMusic = newMusic
-        tempMusic.noteless = e.target.value
-        setNewMusic(tempMusic)
-    }
-
-    function onChangeScale(e) {
-        let tempMusic = newMusic
-        tempMusic.scale = e.target.value
         setNewMusic(tempMusic)
     }
 

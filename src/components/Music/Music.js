@@ -28,6 +28,9 @@ export default function Music(props) {
 
             {/* difficulty */}
             <td>{props.music.difficulty}</td>
+            
+            {/* author */}
+             <td>{props.music.author}</td>
 
              {/* music name */}
              <td>{props.music.name}</td>
