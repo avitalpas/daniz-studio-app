@@ -13,6 +13,7 @@ export default function Students(props) {
     axios.get('http://localhost:5000/students')
       .then(response => {
 
+        console.log('getting students from server')
         response.data.sort((a, b) => {
           let fa = a.name
           let fb = b.name
@@ -23,31 +24,42 @@ export default function Students(props) {
         })
 
         setStudents(response.data)
+        setOriginStudents(response.data)
+
       })
       .catch(error => console.log(error))
-  })
+  }, [])
 
 
+  // print students list
   function studentsList() {
+
     return students.map(curStudent => {
       return <Student student={curStudent} key={curStudent._id} />
     })
   }
 
+  // runs when search input changes
   function onStudentSearchChange(e) {
+
+    // if input is empty > show all students
     if (e.target.value == '') {
       setStudents(originStudents)
+
+    // if input is not empty > filter students by input value 
     } else {
-      filterStudents(students, e.target.value)
+      filterStudents(originStudents, e.target.value)
     }
   }
 
+  // filter objects array by name inclufing search string value
   function filterStudents(array, string){
 
     let tempArr = array
     tempArr = tempArr.filter(stu => stu.name.includes(string))
-
+    
     setStudents(tempArr)
+    console.log(tempArr)
   }
 
   return (
