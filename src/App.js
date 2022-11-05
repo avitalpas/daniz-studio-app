@@ -8,6 +8,7 @@ import NewStudent from './components/Students/NewStudent'
 import NewLesson from './components/Lessons/NewLesson'
 import NewMusic from './components/Music/NewMusic'
 import EditStudent from './components/Students/EditStudent'
+import EditMusic from './components/Music/EditMusic'
 import StudentDetails from './components/Students/StudentDetails';
 import NewItem from './components/NewItem/NewItem';
 import Settings from './components/Settings/Settings'
@@ -85,6 +86,7 @@ const scales =['A', 'Ab', 'Ab-C', 'Abm', 'Am', 'B', 'Bb', 'Bbm', 'Bm', 'C', 'C#'
 
               {/* edit forms */}
               <Route path="/students/edit/:id" element={<EditStudent />} />
+              <Route path="/musics/edit/:id" element={<EditMusic difficulties={difficulties}/>} />
 
               {/* details */}
               <Route exact path="/students/details/:id" element={<StudentDetails />} />

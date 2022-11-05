@@ -1,3 +1,5 @@
+@import "Global.scss";
+
 .music-form{
     max-width: 500px;
     margin: auto;
@@ -11,6 +13,29 @@
         a{
             padding: 5px;
             color: black;
+        }
+    }
+}
+
+#musicFilterBar{
+    direction: rtl;
+    align-items: center;
+
+    .music-filter-div{
+        display: inline-block;
+        direction: rtl;
+
+        select, input{
+            background-color: $search_gray;
+            border: none;
+            margin: 5px;
+            padding: 5px;
+            width: 250px;
+            border-radius: 10px;
+
+            &:focus{
+                outline: none;
+            }
         }
     }
 }

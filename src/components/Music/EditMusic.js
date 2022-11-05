@@ -1,37 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 import axios from 'axios'
 import '../../css/Global.scss'
 
-export default function NewMusic(props) {
+export default function EditMusic(props) {
 
-    const [newMusic, setNewMusic] = useState({
-        name: '',
-        author: '',
-        difficulty: '',
-        reCreated: false,
-        mastering: false,
-        fillIn: false,
-        noteless: false,
-        scale: '',
-        accomp: '',
-        bpm: '',
-        tempo: '',
-        weight: '',
-        genre: ''
-    })
+    const [music, setMusic] = useState({})
+    const { id } = useParams()
 
     const difficulties = props.difficulties
 
+    useEffect(() => {
+        // get music
+        axios.get('http://localhost:5000/musics/' + id)
+            .then(response => {
+                setMusic(response.data)
+            })
+            .catch(error => console.log(error))
+    }, [])
+
     function onFieldChange(e, fieldName) {
-        let tempMusic = newMusic
+        let tempMusic = music
         tempMusic[fieldName] = e.target.value
-        setNewMusic(tempMusic)
+        setMusic(tempMusic)
     }
 
     function onSubmit(e) {
         e.preventDefault()
 
-        axios.post('http://localhost:5000/musics/new', newMusic)
+        axios.post('http://localhost:5000/musics/update/' + id, music)
             .then(res => console.log(res.data))
 
         window.location = '/musics'
@@ -39,7 +36,7 @@ export default function NewMusic(props) {
 
     function diffucultyOptions() {
         return difficulties.map(level => {
-            if (level.value == 0) {
+            if (level.value == music.difficulty) {
                 return (
                     <option key={level.value} value={level.value} selected>{level.value} - {level.label}</option>
                 )
@@ -51,19 +48,45 @@ export default function NewMusic(props) {
         })
     }
 
+    function getBooleanOptions(field) {
+        if (music[field] == false) {
+            return (
+                <select name={field}
+                    className='form-control'
+                    onChange={(e) => { onFieldChange(e, field) }}
+
+                >
+                    <option value="false" selected>לא</option>
+                    <option value="true" >כן</option>
+                </select>
+            )
+        } else {
+            return (
+                <select name={field}
+                    className='form-control'
+                    onChange={(e) => { onFieldChange(e, field) }}
+
+                >
+                    <option value="false" >לא</option>
+                    <option value="true" selected>כן</option>
+                </select>
+            )
+        }
+    }
+
     return (
         <div id="newMusic" className='bodyDiv form-float'>
-            <h3>הוספת יצירה חדשה</h3>
+            <h3>עריכת יצירה: {music.name}</h3>
 
             <form onSubmit={onSubmit} dir='rtl'>
 
-                <p>הכנס פרטי יצירה:</p>
+                <p>פרטי יצירה:</p>
                 {/* name */}
                 <div className='form-group'>
                     <input type='text'
                         className='form-control'
                         onChange={(e) => { onFieldChange(e, 'name') }}
-                        placeholder='שם יצירה:'
+                        value={music.name}
                         required
                     />
                 </div>
@@ -73,7 +96,7 @@ export default function NewMusic(props) {
                     <input type='text'
                         className='form-control'
                         onChange={(e) => { onFieldChange(e, 'author') }}
-                        placeholder='יוצר:'
+                        value={music.author}
                         required
                     />
                 </div>
@@ -89,9 +112,8 @@ export default function NewMusic(props) {
                             className='form-control'
                             onChange={(e) => { onFieldChange(e, 'difficulty') }}
                             placeholder='רמת קושי'
-                            
-                        >
 
+                        >
                             {diffucultyOptions()}
                         </select>
                     </div>
@@ -101,14 +123,7 @@ export default function NewMusic(props) {
                 <div className='form-group'>
                     <div className='fieldWithHeader'>
                         <p className='fieldHeader'>עשוי מחדש?</p>
-                        <select name='reCreated'
-                            className='form-control'
-                            onChange={(e) => { onFieldChange(e, 'reCreated') }}
-                            
-                        >
-                            <option value="false" selected>לא</option>
-                            <option value="true">כן</option>
-                        </select>
+                        {getBooleanOptions('reCreated')}
                     </div>
                 </div>
 
@@ -116,14 +131,7 @@ export default function NewMusic(props) {
                 <div className='form-group'>
                     <div className='fieldWithHeader'>
                         <p className='fieldHeader'>מאסטרינג?</p>
-                        <select name='reCreated'
-                            className='form-control'
-                            onChange={(e) => { onFieldChange(e, 'mastering') }}
-                            
-                        >
-                            <option value="false" selected>לא</option>
-                            <option value="true">כן</option>
-                        </select>
+                        {getBooleanOptions('mastering')}
                     </div>
                 </div>
 
@@ -131,14 +139,8 @@ export default function NewMusic(props) {
                 <div className='form-group'>
                     <div className='fieldWithHeader'>
                         <p className='fieldHeader'>השלמת מנגינה?</p>
-                        <select name='reCreated'
-                            className='form-control'
-                            onChange={(e) => { onFieldChange(e, 'fillIn') }}
-                            
-                        >
-                            <option value="false" selected>לא</option>
-                            <option value="true">כן</option>
-                        </select>
+                        {getBooleanOptions('fillIn')}
+
                     </div>
                 </div>
 
@@ -146,14 +148,8 @@ export default function NewMusic(props) {
                 <div className='form-group'>
                     <div className='fieldWithHeader'>
                         <p className='fieldHeader'>נגינה ללא תווים?</p>
-                        <select name='reCreated'
-                            className='form-control'
-                            onChange={(e) => { onFieldChange(e, 'noteLess') }}
-                            
-                        >
-                            <option value="false" selected>לא</option>
-                            <option value="true">כן</option>
-                        </select>
+                        {getBooleanOptions('noteLess')}
+
                     </div>
                 </div>
 
@@ -162,8 +158,8 @@ export default function NewMusic(props) {
                     <input type='text'
                         className='form-control'
                         onChange={(e) => { onFieldChange(e, 'scale') }}
-                        placeholder='סולם'
-                        
+                        value={music.scale}
+
                     />
                 </div>
 
@@ -172,8 +168,8 @@ export default function NewMusic(props) {
                     <input type='text'
                         className='form-control'
                         onChange={(e) => { onFieldChange(e, 'bpm') }}
-                        placeholder='bpm'
-                        
+                        value={music.bpm}
+
                     />
                 </div>
 
@@ -182,8 +178,8 @@ export default function NewMusic(props) {
                     <input type='text'
                         className='form-control'
                         onChange={(e) => { onFieldChange(e, 'tempo') }}
-                        placeholder='Tempo'
-                        
+                        value={music.tempo}
+
                     />
                 </div>
 
@@ -192,8 +188,8 @@ export default function NewMusic(props) {
                     <input type='text'
                         className='form-control'
                         onChange={(e) => { onFieldChange(e, 'weight') }}
-                        placeholder='משקל'
-                        
+                        value={music.weight}
+
                     />
                 </div>
 
@@ -202,8 +198,8 @@ export default function NewMusic(props) {
                     <input type='text'
                         className='form-control'
                         onChange={(e) => { onFieldChange(e, 'genre') }}
-                        placeholder='זאנר'
-                        
+                        value={music.genre}
+
                     />
                 </div>
 
@@ -212,8 +208,8 @@ export default function NewMusic(props) {
                     <input type='text'
                         className='form-control'
                         onChange={(e) => { onFieldChange(e, 'accomp') }}
-                        placeholder='ליווי'
-                        
+                        value={music.accomp}
+
                     />
                 </div>
 
@@ -221,7 +217,7 @@ export default function NewMusic(props) {
                 <button type='submit'
                     value='הוסף'
                     className='submitBtn'>
-                    הוספת יצירה
+                    עדכון יצירה
                 </button>
 
             </form>

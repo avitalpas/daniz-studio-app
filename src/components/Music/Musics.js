@@ -4,22 +4,25 @@ import axios from 'axios'
 import '../../css/Music.scss'
 import '../../css/Global.scss'
 import Music from './Music';
+import MusicFilter from './MusicFilter';
 
 export default function Musics(props) {
 
   const [musics, setMusics] = useState([])
+  const [originMusics, setOriginMusics] = useState([])
 
-  useEffect(()=> {
+  useEffect(() => {
     axios.get('http://localhost:5000/musics')
       .then(response => {
         setMusics(response.data)
+        setOriginMusics(response.data)
       })
       .catch(error => console.log(error))
-  })
+  },[])
 
   function musicsList() {
     return musics.map(curMusic => {
-      return <Music music={curMusic} deleteMusic={deleteMusic} key={curMusic._id} difficulties={props.difficulties}/>
+      return <Music music={curMusic} deleteMusic={deleteMusic} key={curMusic._id} difficulties={props.difficulties} />
     })
   }
 
@@ -30,17 +33,36 @@ export default function Musics(props) {
     setMusics(musics.filter(el => el._id !== id))
   }
 
+  function onFilterChange(value, field){
+    console.log('change filter: ', field, " ", value)
+
+    if(value==''){
+
+      setMusics(originMusics)
+
+    } else {
+
+      let tempArr = originMusics
+      tempArr = tempArr.filter(mus => mus[field].toLowerCase().includes(value.toLowerCase()))
+  
+      setMusics(tempArr)
+    }
+
+  }
 
   return (
     <div id='music' className='bodyDiv'>
 
       <h3>היצירות שלי</h3>
+
+      <MusicFilter onFilterChange={onFilterChange} difficulties={props.difficulties} musics={musics}/>
+
       <table className="table">
         <thead className="thead-light">
           <tr>
             <th>פעולות</th>
             <th>ליווי</th>
-            <th>זאנר</th>
+            <th>סגנון</th>
             <th>משקל</th>
             <th>Tempo</th>
             <th>BPM</th>

@@ -6,23 +6,17 @@ import '../../css/Global.scss'
 export default function EditStudent() {
 
     const [student, setStudent] = useState({});
-    const [isMounted, setIsMounted] = useState(false)
-
     const { id } = useParams()
 
     useEffect(() => {
-        if (!isMounted) {
+        // get student
+        axios.get('http://localhost:5000/students/' + id)
+            .then(response => {
+                setStudent(response.data)
+            })
+            .catch(error => console.log(error))
 
-            // get student
-            axios.get('http://localhost:5000/students/' + id)
-                .then(response => {
-                    setStudent(response.data)
-                    setIsMounted(true)
-                })
-                .catch(error => console.log(error))
-
-        }
-    })
+    }, [])
 
     function onChangeName(e) {
 
