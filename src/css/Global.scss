@@ -37,13 +37,29 @@ body{
 .form-float{
     max-width: 600px;
     margin: auto;
-    margin-top: 150px !important;
+    margin-top: 100px !important;
     box-shadow: 0 0 10px rgba(128, 128, 128, 0.65);
     padding: 0;
     border-radius: 2px;
     justify-items: center;
     animation: slide-in-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     transition: .3 ease-in-out;
+
+    .fieldWithHeader{
+      display: flex;
+      margin-right: 100px;
+      margin-left: 100px;
+      margin-bottom: 10px;
+
+      p{
+        width: 45%;
+        text-align: right;
+      }
+
+      .form-control{
+        margin: 0;
+      }
+    }
 
     p{
       margin: 10px;
@@ -82,7 +98,6 @@ body{
         }
     }
 }
-
 
 /**
  * ----------------------------------------

@@ -1,83 +1,55 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { getOptions } from 'filepond'
-export default function NewMusic() {
+import '../../css/Global.scss'
+
+export default function NewMusic(props) {
 
     const [newMusic, setNewMusic] = useState({
         name: '',
         author: '',
         difficulty: '',
+        reCreated: false,
+        mastering: false,
+        fillIn: false,
         noteless: false,
-        scale: ''
+        scale: '',
+        accomp: '',
+        bpm: '',
+        tempo: '',
+        weight: '',
+        genre: ''
     })
 
-    const difficulties = [
-        {
-            value: 0,
-            label: 'לא מסווג'
-        },{
-            value: 1,
-            label: 'קל מאוד - מתחילים'
-        },{
-            value: 2,
-            label: 'קל'
-        },{
-            value: 3,
-            label: 'בינוני - קל'
-        },{
-            value: 4,
-            label: 'בינוני'
-        },{
-            value: 5,
-            label: 'בינוני - קשה'
-        },{
-            value: 6,
-            label: 'קשה'
-        },{
-            value: 7,
-            label: 'מאוד קשה'
-        }
-    ]
+    const difficulties = props.difficulties
+    const scales = props.scales
 
-    function onChangeName(e) {
+    function onFieldChange(e, fieldName) {
+        console.log(fieldName, ': ', e.target.value,)
         let tempMusic = newMusic
-        tempMusic.name = e.target.value
-        setNewMusic(tempMusic)
-    }
-
-    function onChangeAuthor(e) {
-        let tempMusic = newMusic
-        tempMusic.author = e.target.value
-        setNewMusic(tempMusic)
-    }
-
-    function onChangeDifficulty(e) {
-        let tempMusic = newMusic
-        let difficultyLabel = difficulties.find(el => el.value == e.target.value)
-        
-        tempMusic.difficulty = difficultyLabel.label
-
+        tempMusic[fieldName] = e.target.value
         setNewMusic(tempMusic)
     }
 
     function onSubmit(e) {
         e.preventDefault()
 
-        axios.post('http://localhost:5000/musics/new', newMusic)
-            .then(res => console.log(res.data))
+        console.log(newMusic)
 
-        window.location = '/musics'
+        // axios.post('http://localhost:5000/musics/new', newMusic)
+        //     .then(res => console.log(res.data))
+
+        // window.location = '/musics'
     }
 
-    function diffucultyOptions(){
-        return difficulties.map( level => {
-            if( level.value == 0 ) {
+    function diffucultyOptions() {
+        return difficulties.map(level => {
+            if (level.value == 0) {
                 return (
-                    <option value={level.value} selected>{level.value} - {level.label}</option>
+                    <option key={level.value} value={level.value} selected>{level.value} - {level.label}</option>
                 )
             } else {
                 return (
-                    <option value={level.value}>{level.value} - {level.label}</option>
+                    <option key={level.value} value={level.value}>{level.value} - {level.label}</option>
                 )
             }
         })
@@ -94,7 +66,7 @@ export default function NewMusic() {
                 <div className='form-group'>
                     <input type='text'
                         className='form-control'
-                        onChange={onChangeName}
+                        onChange={(e) => { onFieldChange(e, 'name') }}
                         placeholder='שם יצירה:'
                         required
                     />
@@ -104,7 +76,7 @@ export default function NewMusic() {
                 <div className='form-group'>
                     <input type='text'
                         className='form-control'
-                        onChange={onChangeAuthor}
+                        onChange={(e) => { onFieldChange(e, 'author') }}
                         placeholder='יוצר:'
                         required
                     />
@@ -112,15 +84,141 @@ export default function NewMusic() {
 
                 {/* diffuculty */}
                 <div className='form-group'>
-                    <select name='difficulty'
-                        className='form-control'
-                        onChange={onChangeDifficulty}
-                        placeholder='רמת קושי'
-                        required
-                    >
 
-                        {diffucultyOptions()}
-                    </select>
+                    <div className='fieldWithHeader'>
+
+                        <p className='fieldHeader'>רמת קושי:</p>
+
+                        <select name='difficulty'
+                            className='form-control'
+                            onChange={(e) => { onFieldChange(e, 'difficulty') }}
+                            placeholder='רמת קושי'
+                            
+                        >
+
+                            {diffucultyOptions()}
+                        </select>
+                    </div>
+                </div>
+
+                {/* reCreated */}
+                <div className='form-group'>
+                    <div className='fieldWithHeader'>
+                        <p className='fieldHeader'>עשוי מחדש?</p>
+                        <select name='reCreated'
+                            className='form-control'
+                            onChange={(e) => { onFieldChange(e, 'reCreated') }}
+                            
+                        >
+                            <option value="false" selected>לא</option>
+                            <option value="true">כן</option>
+                        </select>
+                    </div>
+                </div>
+
+                {/* mastering */}
+                <div className='form-group'>
+                    <div className='fieldWithHeader'>
+                        <p className='fieldHeader'>מאסטרינג?</p>
+                        <select name='reCreated'
+                            className='form-control'
+                            onChange={(e) => { onFieldChange(e, 'mastering') }}
+                            
+                        >
+                            <option value="false" selected>אין</option>
+                            <option value="true">יש</option>
+                        </select>
+                    </div>
+                </div>
+
+                {/* fillIn */}
+                <div className='form-group'>
+                    <div className='fieldWithHeader'>
+                        <p className='fieldHeader'>השלמת מנגינה?</p>
+                        <select name='reCreated'
+                            className='form-control'
+                            onChange={(e) => { onFieldChange(e, 'fillIn') }}
+                            
+                        >
+                            <option value="false" selected>לא</option>
+                            <option value="true">כן</option>
+                        </select>
+                    </div>
+                </div>
+
+                {/* noteLess */}
+                <div className='form-group'>
+                    <div className='fieldWithHeader'>
+                        <p className='fieldHeader'>נגינה ללא תווים?</p>
+                        <select name='reCreated'
+                            className='form-control'
+                            onChange={(e) => { onFieldChange(e, 'noteLess') }}
+                            
+                        >
+                            <option value="false" selected>לא</option>
+                            <option value="true">כן</option>
+                        </select>
+                    </div>
+                </div>
+
+                {/* scale */}
+                <div className='form-group'>
+                    <input type='text'
+                        className='form-control'
+                        onChange={(e) => { onFieldChange(e, 'scale') }}
+                        placeholder='סולם'
+                        
+                    />
+                </div>
+
+                {/* bpm */}
+                <div className='form-group'>
+                    <input type='text'
+                        className='form-control'
+                        onChange={(e) => { onFieldChange(e, 'bpm') }}
+                        placeholder='bpm'
+                        
+                    />
+                </div>
+
+                {/* tempo */}
+                <div className='form-group'>
+                    <input type='text'
+                        className='form-control'
+                        onChange={(e) => { onFieldChange(e, 'tempo') }}
+                        placeholder='Tempo'
+                        
+                    />
+                </div>
+
+                {/* weight */}
+                <div className='form-group'>
+                    <input type='text'
+                        className='form-control'
+                        onChange={(e) => { onFieldChange(e, 'weight') }}
+                        placeholder='משקל'
+                        
+                    />
+                </div>
+
+                {/* genre */}
+                <div className='form-group'>
+                    <input type='text'
+                        className='form-control'
+                        onChange={(e) => { onFieldChange(e, 'genre') }}
+                        placeholder='זאנר'
+                        
+                    />
+                </div>
+
+                {/* accomp */}
+                <div className='form-group'>
+                    <input type='text'
+                        className='form-control'
+                        onChange={(e) => { onFieldChange(e, 'accomp') }}
+                        placeholder='ליווי'
+                        
+                    />
                 </div>
 
                 {/* submit */}

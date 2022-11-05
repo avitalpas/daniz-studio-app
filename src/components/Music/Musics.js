@@ -5,7 +5,7 @@ import '../../css/Music.scss'
 import '../../css/Global.scss'
 import Music from './Music';
 
-export default function Musics() {
+export default function Musics(props) {
 
   const [musics, setMusics] = useState([])
 
@@ -19,7 +19,7 @@ export default function Musics() {
 
   function musicsList() {
     return musics.map(curMusic => {
-      return <Music music={curMusic} deleteMusic={deleteMusic} key={curMusic._id} />
+      return <Music music={curMusic} deleteMusic={deleteMusic} key={curMusic._id} difficulties={props.difficulties}/>
     })
   }
 
@@ -39,7 +39,16 @@ export default function Musics() {
         <thead className="thead-light">
           <tr>
             <th>פעולות</th>
-            <th>תווים</th>
+            <th>ליווי</th>
+            <th>זאנר</th>
+            <th>משקל</th>
+            <th>Tempo</th>
+            <th>BPM</th>
+            <th>סולם</th>
+            <th>נגינה ללא תווים</th>
+            <th>השלמת מנגינה</th>
+            <th>מאסטרינג</th>
+            <th>נוצר מחדש</th>
             <th>רמת קושי</th>
             <th>יוצר</th>
             <th>שם</th>
