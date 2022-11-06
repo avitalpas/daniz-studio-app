@@ -22,10 +22,17 @@ export default function Music(props) {
             {/* music actions */}
             <td className='action-links'>
 
-                {/* edit music */}
+                {/* schedule lesson */}
                 <div className="action-link">
                     <Link to={'/musics/edit/' + props.music._id} title='עריכת תלמיד'>
                         <i className="far fa-edit"></i>
+                    </Link>
+                </div>
+                
+                {/* edit music */}
+                <div className="action-link">
+                    <Link to={'/musics/edit/' + props.music._id} title='הוסף לשיעור עם תלמיד'>
+                        <i className="fas fa-user-plus"></i>
                     </Link>
                 </div>
 
@@ -74,7 +81,7 @@ export default function Music(props) {
             <td>{props.music.author}</td>
 
             {/* music name */}
-            <td>{props.music.name}</td>
+            <td><strong>{props.music.name}</strong></td>
         </tr>
     )
 }

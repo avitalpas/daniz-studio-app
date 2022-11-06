@@ -9,7 +9,7 @@ import timegrid from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction"
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 
-export default function Lessons() {
+export default function Lessons(props) {
   const currentDate = new Date()
 
   const [lessons, setLessons] = useState([])
@@ -32,13 +32,13 @@ export default function Lessons() {
 
     if (!isMounted) {
 
-      axios.get('http://localhost:5000/students')
+      axios.get( props.HEROKU + '/students')
         .then(response => {
 
           setStudents(response.data)
           let tempStudents = response.data
 
-          axios.get('http://localhost:5000/lessons')
+          axios.get( props.HEROKU + '/lessons')
             .then(response => {
 
               let tempEvents = []

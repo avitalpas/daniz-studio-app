@@ -12,7 +12,7 @@ export default function Musics(props) {
   const [originMusics, setOriginMusics] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/musics')
+    axios.get( props.HEROKU + '/musics')
       .then(response => {
         setMusics(response.data)
         setOriginMusics(response.data)
@@ -27,7 +27,7 @@ export default function Musics(props) {
   }
 
   function deleteMusic(id) {
-    axios.delete('http://localhost:5000/musics/' + id)
+    axios.delete( props.HEROKU + '/musics/' + id)
       .then(res => console.log(res.data))
 
     setMusics(musics.filter(el => el._id !== id))

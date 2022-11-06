@@ -8,7 +8,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import FullCalendar from '@fullcalendar/react'
 import listPlugin from '@fullcalendar/list';
 
-export default function Home() {
+export default function Home(props) {
 
   const [students, setStudents] = useState([])
   const [lessons, setLessons] = useState([])
@@ -20,7 +20,7 @@ export default function Home() {
     if (!isMounted) {
 
       // students
-      axios.get('http://localhost:5000/students')
+      axios.get( props.HEROKU + '/students')
         .then(response => {
 
           response.data.sort((a, b) => { // sort students ( will be moved to saparete function)
@@ -36,7 +36,7 @@ export default function Home() {
           let tempStudents = response.data // will be used for lessons
 
           // lessons
-          axios.get('http://localhost:5000/lessons')
+          axios.get( props.HEROKU + '/lessons')
             .then(response => {
               let tempEvents = []
               response.data.forEach(lesson => {
@@ -71,7 +71,7 @@ export default function Home() {
 
 
       // musics
-      axios.get('http://localhost:5000/musics')
+      axios.get( props.HEROKU + '/musics')
         .then(response => {
 
           setMusics(response.data)

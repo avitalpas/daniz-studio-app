@@ -10,7 +10,7 @@ export default function Students(props) {
   const [originStudents, setOriginStudents] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/students')
+    axios.get( props.HEROKU + '/students')
       .then(response => {
 
         console.log('getting students from server')

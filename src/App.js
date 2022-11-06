@@ -24,6 +24,8 @@ function App() {
   const { isLoading } = useAuth0()
   const { user } = useAuth0()
 
+  const HEROKU = 'https://daniz-studio-app-server.herokuapp.com'
+
   const difficulties = [
     {
         value: 0,
@@ -60,7 +62,7 @@ const scales =['A', 'Ab', 'Ab-C', 'Abm', 'Am', 'B', 'Bb', 'Bbm', 'Bm', 'C', 'C#'
   } else if (user != undefined) {
     return (
       <div className="App">
-
+ 
         <Router>
 
           <div>
@@ -69,30 +71,30 @@ const scales =['A', 'Ab', 'Ab-C', 'Abm', 'Am', 'B', 'Bb', 'Bbm', 'Bm', 'C', 'C#'
             <Routes>
 
               {/* main pages */}
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/lessons" element={<Lessons />} />
-              <Route exact path="/students" element={<Students />} />
-              <Route exact path="/musics" element={<Musics difficulties={difficulties} scales={scales}/>} />
-              <Route exact path="/home" element={<Home />} />
+              <Route exact path="/" element={<Home HEROKU={HEROKU} />} />
+              <Route exact path="/lessons" element={<Lessons HEROKU={HEROKU} />} />
+              <Route exact path="/students" element={<Students HEROKU={HEROKU} />} />
+              <Route exact path="/musics" element={<Musics HEROKU={HEROKU} difficulties={difficulties} scales={scales}/>} />
+              <Route exact path="/home" element={<Home HEROKU={HEROKU} />} />
 
               {/* message pages */}
               <Route exact path="/loading" element={<Loading />} />
 
               {/* new forms */}
-              <Route exact path="/students/new" element={<NewStudent />} />
-              <Route exact path="/lessons/new" element={<NewLesson />} />
-              <Route path="/lessons/new/:id" element={<NewLesson />} />
-              <Route exact path="/musics/new" element={<NewMusic difficulties={difficulties} scales={scales}/>} />
+              <Route exact path="/students/new" element={<NewStudent HEROKU={HEROKU} />} />
+              <Route exact path="/lessons/new" element={<NewLesson HEROKU={HEROKU} />} />
+              <Route path="/lessons/new/:id" element={<NewLesson HEROKU={HEROKU} />} />
+              <Route exact path="/musics/new" element={<NewMusic HEROKU={HEROKU} difficulties={difficulties} scales={scales}/>} />
 
               {/* edit forms */}
-              <Route path="/students/edit/:id" element={<EditStudent />} />
-              <Route path="/musics/edit/:id" element={<EditMusic difficulties={difficulties}/>} />
+              <Route path="/students/edit/:id" element={<EditStudent HEROKU={HEROKU} />} />
+              <Route path="/musics/edit/:id" element={<EditMusic HEROKU={HEROKU} difficulties={difficulties}/>} />
 
               {/* details */}
-              <Route exact path="/students/details/:id" element={<StudentDetails />} />
+              <Route exact path="/students/details/:id" element={<StudentDetails HEROKU={HEROKU} />} />
 
               {/* admin routes */}
-              <Route exact path="/settings" element={<Settings />} />
+              <Route exact path="/settings" element={<Settings HEROKU={HEROKU} />} />
 
             </Routes>
 
