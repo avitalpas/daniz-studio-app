@@ -69,18 +69,23 @@ export default function Students(props) {
       <h3>התלמידים שלי</h3>
 
       {/* search */}
-      <div id="students-search">
-        <i className="fas fa-filter"></i>
-        <input type="text" placeholder='חיפוש' onChange={onStudentSearchChange} />
-        <i className="fas fa-search"></i>
+      <div id='search-div'>
+        <div id="students-search">
+          <i className="fas fa-filter"></i>
+          <input type="text" placeholder='חיפוש' onChange={onStudentSearchChange} />
+          <i className="fas fa-search"></i>
+        </div>
+
       </div>
 
       {/* students list */}
-      <table className="table">
-        <tbody>
-          {studentsList()}
-        </tbody>
-      </table>
+      <div id='students-list'>
+        <table className="table">
+          <tbody>
+            {studentsList()}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

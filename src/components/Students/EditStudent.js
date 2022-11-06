@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 import '../../css/Global.scss'
 
-export default function EditStudent() {
+export default function EditStudent(props) {
 
     const [student, setStudent] = useState({});
     const { id } = useParams()
 
     useEffect(() => {
         // get student
-        axios.get('http://localhost:5000/students/' + id)
+        axios.get(props.HEROKU + '/students/' + id)
             .then(response => {
                 setStudent(response.data)
             })
@@ -41,7 +41,7 @@ export default function EditStudent() {
         console.log('Edited student: \n');
         console.log(student);
 
-        axios.post('http://localhost:5000/students/update/' + student._id, student)
+        axios.post(props.HEROKU + '/students/update/' + student._id, student)
             .then(res => console.log(res.data))
 
         window.location = '/students'

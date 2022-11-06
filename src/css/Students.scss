@@ -1,24 +1,49 @@
 @import "Global.scss";
 
-#students-search{
+#students {
+    h3{
+        position: fixed;
+        width: 100%;
+        z-index: 20;
 
-    background-color: $search_gray;
-    width: max-content;
-    border-radius: 30px;
-    padding: 3px 20px;
-    margin: 10px auto;
+    }
 
+    #search-div{
+        position: fixed;
+        top: 120px;
+        width: 100%;
+        z-index: 20;
+        background-color: white;
 
-    input{
+       #students-search {
+
         background-color: $search_gray;
-        border: none;
-        margin: 5px;
-        direction: rtl;
-        padding: 5px;
-        width: 250px;
+        width: max-content;
+        border-radius: 30px;
+        padding: 3px 20px;
+        margin: 10px auto;
 
-        &:focus{
-            outline: none;
+
+
+        input {
+            background-color: $search_gray;
+            border: none;
+            margin: 5px;
+            direction: rtl;
+            padding: 5px;
+            width: 250px;
+
+            &:focus {
+                outline: none;
+            }
         }
+    } 
+    }
+    
+    #students-list{
+        position: absolute;
+        width: 100%;
+        top: 190px;
+        padding-bottom: 100px;
     }
 }

@@ -39,7 +39,7 @@ export default function MusicDetails(props) {
         }
 
         setMusic(tempMusic)
-        axios.post('http://localhost:5000/musics/updatePrintedSheets/' + id, music)
+        axios.post(props.HEROKU + '/musics/updatePrintedSheets/' + id, music)
             .then(res => console.log(res.data))
         console.log(music)
     }

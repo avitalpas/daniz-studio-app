@@ -24,7 +24,7 @@ export default function StudentDetails(props) {
       .catch(error => console.log(error))
 
     // get all student lessons
-    axios.get('http://localhost:5000/lessons/student/' + id)
+    axios.get(props.HEROKU + '/lessons/student/' + id)
       .then(response => {
         setLessons(response.data)
       })

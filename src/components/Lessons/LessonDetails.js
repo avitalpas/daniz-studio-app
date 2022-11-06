@@ -4,7 +4,7 @@ import '../../css/Students.scss'
 import { useParams, Link } from "react-router-dom";
 import axios from 'axios';
 
-export default function LessonDetails() {
+export default function LessonDetails(props) {
 
     const [ lesson, setLesson ] = useState({})
     const [ student, setStudent ] = useState({})
@@ -16,12 +16,12 @@ export default function LessonDetails() {
     useEffect(() => {
 
         // get lesson by id
-        axios.get('http://localhost:5000/lessons/' + id)
+        axios.get(props.HEROKU + '/lessons/' + id)
         .then(response => {
             setLesson(response.data)
 
             // get student by studentID
-            axios.get('http://localhost:5000/students/' + response.data.studentID)
+            axios.get(props.HEROKU + '/students/' + response.data.studentID)
             .then(response => {
                 setStudent(response.data)
             })
@@ -29,7 +29,7 @@ export default function LessonDetails() {
 
             
             // get music by musicID
-            axios.get('http://localhost:5000/musics/' + response.data.musicID)
+            axios.get(props.HEROKU + '/musics/' + response.data.musicID)
             .then(response => {
                 console.log(response.data)
                 setMusic(response.data)
