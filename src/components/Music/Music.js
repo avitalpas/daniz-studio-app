@@ -16,6 +16,15 @@ export default function Music(props) {
         }
     }
 
+    function getPrintedNotes(){
+        console.log('running for: ' + props.music.name)
+        let instruments = Object.keys(props.music.printedNotes)
+        
+        return instruments.map( instrument => {
+            return <span>{instrument + ' ' + props.music.printedNotes[instrument]}</span>
+        })
+    }
+
     return (
         <tr className='music-row'>         
 
@@ -24,40 +33,34 @@ export default function Music(props) {
 
                 {/* schedule lesson */}
                 <div className="action-link">
-                    <Link to={'/musics/edit/' + props.music._id} title='עריכת תלמיד'>
-                        <i className="far fa-edit"></i>
+                    <Link to={'/lessons/new/music-source/'+props.music._id} >
+                        <i className="fas fa-user-plus"></i>
                     </Link>
                 </div>
                 
                 {/* edit music */}
                 <div className="action-link">
-                    <Link to={'/musics/edit/' + props.music._id} title='הוסף לשיעור עם תלמיד'>
-                        <i className="fas fa-user-plus"></i>
+                    <Link to={'/musics/edit/' + props.music._id} >
+                        <i className="far fa-edit"></i>
                     </Link>
                 </div>
 
-                {/* delete music */}
-                <div className="action-link delIcon">
-                    <a href='#' onClick={() => { props.deleteMusic(props.music._id) }} title='מחיקת תלמיד'>
-                        <i className="fas fa-trash del-icon"></i>
-                    </a>
-                </div>
             </td>
 
             {/* accomp */}
-            <td>{props.music.accomp}</td>
+            {/* <td>{props.music.accomp}</td> */}
 
             {/* genre */}
             <td>{props.music.genre}</td>
 
             {/* weight */}
-            <td>{props.music.weight}</td>
+            {/* <td>{props.music.weight}</td> */}
 
             {/* tempo */}
-            <td>{props.music.tempo}</td>
+            {/* <td>{props.music.tempo}</td> */}
 
             {/* bpm */}
-            <td>{props.music.bpm}</td>
+            {/* <td>{props.music.bpm}</td> */}
 
             {/* scale */}
             <td>{props.music.scale}</td>
@@ -69,10 +72,13 @@ export default function Music(props) {
             <td>{props.music.fillIn? '✅': ''}</td>
 
             {/* mastering */}
-            <td>{props.music.mastering? '✅': ''}</td>
+            {/* <td>{props.music.mastering? '✅': ''}</td> */}
 
             {/* reCreated */}
-            <td>{props.music.reCreated? '✅': ''}</td>
+            {/* <td>{props.music.reCreated? '✅': ''}</td> */}
+
+            {/* printedNotes */}
+            <td>{getPrintedNotes()}</td>
 
             {/* difficulty */}
             <td>{getDifficulty()}</td>
@@ -81,7 +87,7 @@ export default function Music(props) {
             <td>{props.music.author}</td>
 
             {/* music name */}
-            <td><strong>{props.music.name}</strong></td>
+            <td><a href={'/musics/details/' + props.music._id}>{props.music.name}</a></td>
         </tr>
     )
 }

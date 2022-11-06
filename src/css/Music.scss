@@ -39,3 +39,60 @@
         }
     }
 }
+
+#music-actions{
+    .action-link{
+        display: inline-block;
+
+        i{
+            color: black;
+            margin: 5px;
+        }
+    }
+}
+
+
+#printed-notes{
+    width: max-content;
+    background-color: rgba(128, 128, 128, 0.15);
+    border-radius: 30px;
+    margin: 30px auto;
+    align-items: center;
+    text-align: center;
+    direction: rtl;
+    padding: 20px 40px;
+
+    .instrument-div{
+        display: inline-block;
+        margin-left: 4px;
+        margin-right: 4px;
+
+        p{
+            margin-bottom: 2px;
+        }
+
+        button{
+            border: none;
+            background: none;
+            border: 1px solid black;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 3px;
+            margin-left: 3px;
+            transition: .3s ease-in-out;
+
+            &.add:hover{
+                border-color: green;
+                color: green;
+                background-color: rgba(0, 128, 0, 0.422);
+            }
+
+            &.reduce:hover{
+                border-color: red;
+                color: red;
+                background-color: rgba(255, 0, 0, 0.196);
+            }
+        }
+    }
+}

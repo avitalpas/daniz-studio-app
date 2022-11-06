@@ -6,7 +6,7 @@ import '../../css/Settings.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table } from 'react-bootstrap'
 
-export default function Users() {
+export default function Users(props) {
 
     const [users, setUsers] = useState([])
     const [isMounted, setIsMounted] = useState(false)
@@ -14,7 +14,7 @@ export default function Users() {
 
     useEffect(() => {
         if (!isMounted) {
-            axios.get('http://localhost:5000/users')
+            axios.get(props.HEROKU + '/users')
                 .then(response => {
                     setUsers(response.data)
                     setIsMounted(true)

@@ -2,43 +2,50 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import '../../css/Global.scss'
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 export default function NewLesson(props) {
 
-    const [studentID, setStudentID] = useState('')
-    const [musicID, setMusicID] = useState('')
-    const [description, setDescription] = useState('')
-    const [date, setDate] = useState(new Date())
-    const [students, setStudents] = useState([])
-    const [musics, setMusics] = useState([])
-    const [isMounted, setIsMounted] = useState(false)
-    const [currentStudent, setCurrentStudent] = useState()
-
-    const { id } = useParams()
-
-    useEffect(() => {
-        if( !isMounted ){
-            getSortedStudents()
-            getSorteMusic()
-
-            if( id != null ){
-                axios.get('http://localhost:5000/students/' + id)
-                    .then(response => {
-                        setCurrentStudent(response.data)
-                        console.log(response.data)
-                    })
-                    .catch(error => console.log(error))
-            } else {
-                setCurrentStudent(null)
-            }
-
-            setIsMounted(true)
-        }
+    const [newLesson, setNewLesson] = useState({
+        studentID: '',
+        musicID: '',
+        description: '',
+        date: new Date()
     })
 
+    const [students, setStudents] = useState([])
+    const [musics, setMusics] = useState([])
+    const { id } = useParams()
+    const location = useLocation().pathname
+
+    useEffect(() => {
+
+        getSortedStudents()
+        getSortedMusic()
+        initParams()
+
+    }, [])
+
+    function initParams(){
+        
+        let tempLesson = newLesson
+        let isMusic = location.includes('music-source')
+        let isStudent = location.includes('student-source')
+        
+        if(isMusic){
+            tempLesson.musicID = id
+        }
+
+        if(isStudent){
+            tempLesson.studentID = id
+        }
+
+        setNewLesson(tempLesson)
+
+    }
+
     function getSortedStudents(){
-        axios.get('http://localhost:5000/students')
+        axios.get( props.HEROKU + '/students')
         .then(response => {
             if (response.data.length > 0) {
 
@@ -51,15 +58,14 @@ export default function NewLesson(props) {
                     else return 0
                 })
 
-
                 setStudents(response.data)
             }
         })
     }
 
     
-    function getSorteMusic(){
-        axios.get('http://localhost:5000/musics')
+    function getSortedMusic(){
+        axios.get( props.HEROKU + '/musics')
         .then(response => {
             if (response.data.length > 0) {
 
@@ -78,54 +84,38 @@ export default function NewLesson(props) {
         })
     }
 
-    function onChangeStudentID(e) {
-        setStudentID(e.target.value)
-    }
-
-    function onChangeMusicID(e) {
-        setMusicID(e.target.value)
-    }
-
-    function onChangeDescription(e) {
-        setDescription(e.target.value)
-    }
-
-    function onChangeDate(dateInput) {
-        setDate(dateInput.value)
+    function onFieldChange(e, fieldName) {
+        let tempLesson = newLesson
+        tempLesson[fieldName] = e.target.value
+        setNewLesson(tempLesson)
     }
 
     function onSubmit(e) {
         e.preventDefault()
 
-        const lesson = {
-            studentID: studentID,
-            musicID: musicID,
-            description: description,
-            date: date
-        }
-
-        axios.post('http://localhost:5000/lessons/new', lesson)
+        axios.post( props.HEROKU + '/lessons/new', newLesson)
             .then(res => console.log(res.data))
 
         window.location = '/home'
     }
 
     function studentsOptions() {
-        if(currentStudent == null ){
-            console.log('no student selected')
-            return students.map(student => {
+        return students.map(student => {
+            if(student._id == newLesson.studentID){
+                return <option key={student._id} value={student._id} selected>{student.name}</option>
+            } else {
                 return <option key={student._id} value={student._id}>{student.name}</option>
-            })
-        } else {
-            console.log('got student')
-            return <option key={currentStudent._id} value={currentStudent._id} selected>{currentStudent.name}</option>
-
-        }
+            }
+        })
     }
 
     function musicsOptions() {
         return musics.map(music => {
-            return <option key={music._id} value={music._id}>{music.name}</option>
+            if(music._id == newLesson.musicID){
+                return <option key={music._id} value={music._id} selected>{music.name}</option>
+            } else {
+                return <option key={music._id} value={music._id}>{music.name}</option>
+            }
         })
     }
 
@@ -140,7 +130,7 @@ export default function NewLesson(props) {
                 <div className="form-group">
                     <select required
                         className='form-control'
-                        onChange={onChangeStudentID}>
+                        onChange={(e)=>{onFieldChange(e,'studentID')}}>
                         <option selected disabled>בחר תלמיד</option>
                         {studentsOptions()}
                     </select>
@@ -150,7 +140,7 @@ export default function NewLesson(props) {
                 <div className="form-group">
                     <select required
                         className='form-control'
-                        onChange={onChangeMusicID}>
+                        onChange={(e)=>{onFieldChange(e,'musicID')}}>
                         <option selected disabled>בחר יצירה</option>
                         {musicsOptions()}
                     </select>
@@ -161,15 +151,14 @@ export default function NewLesson(props) {
                     <input type='text'
                         className='form-control'
                         placeholder='תיאור:'
-                        value={description}
-                        onChange={onChangeDescription} />
+                        onChange={(e)=>{onFieldChange(e,'description')}}/>
                 </div>
 
                 {/* date */}
                 <div className='form-control dateInput'>
                     <p>מתי?</p>
                     <div className="dateTimePicker">
-                        <DateTimePickerComponent onChange={onChangeDate}
+                        <DateTimePickerComponent onChange={(e)=>{onFieldChange(e,'date')}}
                             placeholder='בחר תאריך ושעה'
                             format="dd/MM/yyyy HH:mm"
                         ></DateTimePickerComponent>

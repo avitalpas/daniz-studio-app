@@ -16,6 +16,8 @@ import Home from './components/Home/Home';
 import Loading from './components/Loading';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginRedirect from './components/Login/LoginRedirect';
+import MusicDetails from './components/Music/MusicDetails';
+import LessonDetails from './components/Lessons/LessonDetails';
 
 // main app function
 function App() {
@@ -84,6 +86,8 @@ const scales =['A', 'Ab', 'Ab-C', 'Abm', 'Am', 'B', 'Bb', 'Bbm', 'Bm', 'C', 'C#'
               <Route exact path="/students/new" element={<NewStudent HEROKU={HEROKU} />} />
               <Route exact path="/lessons/new" element={<NewLesson HEROKU={HEROKU} />} />
               <Route path="/lessons/new/:id" element={<NewLesson HEROKU={HEROKU} />} />
+              <Route path="/lessons/new/student-source/:id" element={<NewLesson HEROKU={HEROKU} />} />
+              <Route path="/lessons/new/music-source/:id" element={<NewLesson HEROKU={HEROKU} />} />
               <Route exact path="/musics/new" element={<NewMusic HEROKU={HEROKU} difficulties={difficulties} scales={scales}/>} />
 
               {/* edit forms */}
@@ -92,6 +96,8 @@ const scales =['A', 'Ab', 'Ab-C', 'Abm', 'Am', 'B', 'Bb', 'Bbm', 'Bm', 'C', 'C#'
 
               {/* details */}
               <Route exact path="/students/details/:id" element={<StudentDetails HEROKU={HEROKU} />} />
+              <Route exact path="/musics/details/:id" element={<MusicDetails HEROKU={HEROKU} />} />
+              <Route exact path="/lessons/details/:id" element={<LessonDetails HEROKU={HEROKU} />} />
 
               {/* admin routes */}
               <Route exact path="/settings" element={<Settings HEROKU={HEROKU} />} />

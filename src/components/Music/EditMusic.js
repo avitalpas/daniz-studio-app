@@ -12,7 +12,7 @@ export default function EditMusic(props) {
 
     useEffect(() => {
         // get music
-        axios.get('http://localhost:5000/musics/' + id)
+        axios.get(props.HEROKU + '/musics/' + id)
             .then(response => {
                 setMusic(response.data)
             })
@@ -28,7 +28,7 @@ export default function EditMusic(props) {
     function onSubmit(e) {
         e.preventDefault()
 
-        axios.post('http://localhost:5000/musics/update/' + id, music)
+        axios.post(props.HEROKU + '/musics/update/' + id, music)
             .then(res => console.log(res.data))
 
         window.location = '/musics'

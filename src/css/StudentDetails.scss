@@ -76,4 +76,30 @@
         text-align: right;
         direction: rtl;
     }
+
+    #lessons{
+
+
+        
+        .lesson-div{
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 300px;
+            text-align: right;
+            
+            p{
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .index{
+                font-weight: bold;
+                color: white;
+                background-color: #4390c7;
+                padding: 5px 10px;
+                border-radius: 7px;
+                text-decoration: none;
+            }
+        }
+    }
 }

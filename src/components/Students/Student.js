@@ -37,7 +37,7 @@ export default function Student(props) {
 
                 {/* new lesson */}
                 <div className="actionLink">
-                    <Link to={'/lessons/new/'+props.student._id} title='קביעת שיעור'>
+                    <Link to={'/lessons/new/student-source/'+props.student._id} title='קביעת שיעור'>
                         <i className="fas fa-calendar-week"></i>
                     </Link>
                 </div>

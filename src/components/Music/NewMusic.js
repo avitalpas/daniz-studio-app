@@ -31,7 +31,7 @@ export default function NewMusic(props) {
     function onSubmit(e) {
         e.preventDefault()
 
-        axios.post('http://localhost:5000/musics/new', newMusic)
+        axios.post(props.HEROKU+ '/musics/new', newMusic)
             .then(res => console.log(res.data))
 
         window.location = '/musics'

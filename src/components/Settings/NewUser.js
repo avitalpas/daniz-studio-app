@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function NewUser() {
+export default function NewUser(props) {
 
     // local user
     const [user, setUser] = useState({
@@ -30,7 +30,7 @@ export default function NewUser() {
     function onUserSubmit(e){
         e.preventDefault()
 
-        axios.post('http://localhost:5000/users/new', user)
+        axios.post(props.HEROKU + '/users/new', user)
         .then(res => console.log(res.data))
 
         window.location = '/settings'
