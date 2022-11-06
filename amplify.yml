@@ -6,7 +6,7 @@ frontend:
         - npm ci
     # IMPORTANT - Please verify your build commands
     build:
-      commands: []
+      commands: amplifyPush 
   artifacts:
     # IMPORTANT - Please verify your build output directory
     baseDirectory: /
