@@ -6,7 +6,7 @@ export default function StudentDetailsActions(props) {
 
 
     function deleteStudent(id) {
-        axios.delete('http://localhost:5000/students/' + id)
+        axios.delete(props.HEROKU + '/students/' + id)
             .then(window.location = '/students')
     }
 
