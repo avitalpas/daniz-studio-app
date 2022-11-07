@@ -1,3 +1,82 @@
 .action-links{
     display: flex;
 }
+
+#lesson-details{
+    button{
+        background: none;
+        border: none;
+    }
+
+    #actions{
+        position: fixed;
+        width: max-content;
+        padding: 7px;
+
+        #delete-lesson{
+            color: rgb(193, 12, 12);
+            border-radius: 50%;
+            transition: .3s;
+            padding: 5px 10px;
+
+            &:hover{
+                background-color: rgb(193, 12, 12);
+                color: white;
+            }
+
+        }
+    }
+
+    .info-div{
+        direction: rtl;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(128, 128, 128, 0.54);
+        width: 60%;
+        margin: 15px auto;
+
+        i{
+            direction: rtl;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        p{
+            direction: rtl;
+            display: inline-block;
+        }
+
+    }
+
+    #description{
+
+        text-align: center;
+
+        #edit-description-btn{
+            position: fixed;
+            padding: 3px;
+            left: 20%;
+        }
+
+        h5{
+            margin: 0 45px;
+        }
+
+        #description-value{
+            display: inline-block;
+            text-align: center;
+            
+        }
+    
+        #description-editor{
+            display: none;
+
+            button{
+                position: fixed;
+                padding: 3px;
+                left: 20%;
+                margin-top: -20px;
+            }
+        }
+    }
+    
+}

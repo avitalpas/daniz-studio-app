@@ -6,8 +6,11 @@ export default function StudentDetailsActions(props) {
 
 
     function deleteStudent(id) {
+
         axios.delete(props.HEROKU + '/students/' + id)
             .then(window.location = '/students')
+            .catch(error => console.log(error)) 
+
     }
 
     return (
@@ -38,9 +41,9 @@ export default function StudentDetailsActions(props) {
 
             {/* delete */}
             <div className="actions-link delIcon">
-                <a href='#' onClick={() => { deleteStudent(props.student._id) }} title='מחיקת תלמיד'>
+                <button onClick={() => { deleteStudent(props.student._id) }} title='מחיקת תלמיד'>
                     <i className="fas fa-trash-alt del-icon"></i>
-                </a>
+                </button>
             </div>
 
         </div>

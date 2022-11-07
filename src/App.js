@@ -27,6 +27,7 @@ function App() {
   const { user } = useAuth0()
 
   const HEROKU = 'https://daniz-studio-app-server.herokuapp.com'
+  // const HEROKU = 'https://main.dn75xksnagzxe.amplifyapp.com'
 
   const difficulties = [
     {
@@ -68,7 +69,7 @@ const scales =['A', 'Ab', 'Ab-C', 'Abm', 'Am', 'B', 'Bb', 'Bbm', 'Bm', 'C', 'C#'
         <Router>
 
           <div>
-            <TopNav />
+            <TopNav HEROKU={HEROKU}/>
 
             <Routes>
 

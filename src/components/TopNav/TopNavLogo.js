@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NavbarLogo from '../../img/logo/Navbar logo.png'
 
-export default class TopNavLogo extends Component {
-  render() {
-    return (
-        <div id='topNavLogo'>
-            <img src={NavbarLogo}></img>
-        </div>
-    )
-  }
+export default function TopNavLogo() {
+  return (
+    <div id='topNavLogo'>
+      <img src={NavbarLogo}></img>
+    </div>
+  )
 }

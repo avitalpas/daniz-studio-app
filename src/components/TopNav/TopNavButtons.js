@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-export default function TopNavButtons() {
+export default function TopNavButtons(props) {
   return (
     <div id='topNavButtons'>
 

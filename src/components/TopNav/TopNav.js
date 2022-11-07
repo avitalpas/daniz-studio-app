@@ -5,16 +5,14 @@ import TopNavButtons from './TopNavButtons'
 import TopNavAccountButtons from './TopNavAccountButtons'
 
 
-export default class TopNav extends Component {
-  render() {
-    return (
-      <div id='topNav'>
+export default function TopNav (props) {
+  return (
+    <div id='topNav'>
 
-        <TopNavLogo />
-        <TopNavButtons />
-        <TopNavAccountButtons />
+      <TopNavLogo HEROKU={props.HEROKU}/>
+      <TopNavButtons HEROKU={props.HEROKU} />
+      <TopNavAccountButtons HEROKU={props.HEROKU} />
 
-      </div>
-    )
-  }
+    </div>
+  )
 }

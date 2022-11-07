@@ -74,7 +74,7 @@ export default function StudentDetails(props) {
       <StudentHeader student={student} />
 
       {/* actions */}
-      <StudentDetailsActions student={student} />
+      <StudentDetailsActions student={student} HEROKU={props.HEROKU}/>
 
       {/* lessons */}
       <div id='lessons'>
