@@ -96,3 +96,31 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+
+    .music-filter-div{
+        display: none !important;
+    }
+
+    .music-row{
+        font-size: 15px;
+
+        a{
+            font-size: 15px;
+        }
+    }
+
+    .hide-mobile-info{
+        display: none;
+    }
+
+    td{
+        height: 90px !important;
+    }
+
+    .action-links{
+        padding: 20px 0px !important;
+    }
+
+}

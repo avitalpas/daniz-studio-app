@@ -14,7 +14,6 @@ export default function Lessons(props) {
 
   const [lessons, setLessons] = useState([])
   const [students, setStudents] = useState([])
-  const [isMounted, setIsMounted] = useState(false)
 
   const [events, setEvents] = useState([
     {
@@ -30,7 +29,6 @@ export default function Lessons(props) {
   // get lessons list - full students data
   useEffect(() => {
 
-    if (!isMounted) {
 
       axios.get( props.HEROKU + '/students')
         .then(response => {
@@ -71,12 +69,6 @@ export default function Lessons(props) {
         })
         .catch(error => console.log(error))
 
-
-
-
-
-      setIsMounted(true)
-    }
 
   })
 

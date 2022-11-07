@@ -14,16 +14,27 @@ export default function MusicFilter(props) {
         })
     }
 
+    function showFilter(filter){
+        console.log(filter)
+        document.getElementById('filter-'+filter).style.display='inline !important'
+    }
+
     return (
         <div id='musicFilterBar'>
 
+            {/* mobile filter icons */}
+            {/* <div mobile-filter-icons>
+                <button onClick={()=>{showFilter('name')}}>שם</button>
+                <button onClick={()=>{showFilter('author')}}>זמר</button>
+            </div> */}
+
             {/* search by name */}
-            <div className='music-filter-div'>
+            <div id='filter-name' className='music-filter-div'>
                 <input type="text" placeholder='שם יצירה' onChange={(e) => { props.onFilterChange(e.target.value, 'name') }} />
             </div>
 
             {/* search by author */}
-            <div className='music-filter-div'>
+            <div id='filter-author' className='music-filter-div'>
                 <input type="text" placeholder='יוצר' onChange={(e) => { props.onFilterChange(e.target.value, 'author') }} />
             </div>
 

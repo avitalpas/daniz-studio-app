@@ -17,7 +17,6 @@ export default function Music(props) {
     }
 
     function getPrintedNotes(){
-        console.log('running for: ' + props.music.name)
         let instruments = Object.keys(props.music.printedNotes)
         
         return instruments.map( instrument => {
@@ -51,7 +50,7 @@ export default function Music(props) {
             {/* <td>{props.music.accomp}</td> */}
 
             {/* genre */}
-            <td>{props.music.genre}</td>
+            <td className='hide-mobile-info'>{props.music.genre}</td>
 
             {/* weight */}
             {/* <td>{props.music.weight}</td> */}
@@ -66,10 +65,10 @@ export default function Music(props) {
             <td>{props.music.scale}</td>
 
             {/* noteLess */}
-            <td>{props.music.noteLess? '✅': ''}</td>
+            <td className='hide-mobile-info'>{props.music.noteLess? '✅': ''}</td>
 
             {/* fillIn */}
-            <td>{props.music.fillIn? '✅': ''}</td>
+            <td className='hide-mobile-info'>{props.music.fillIn? '✅': ''}</td>
 
             {/* mastering */}
             {/* <td>{props.music.mastering? '✅': ''}</td> */}
@@ -87,7 +86,7 @@ export default function Music(props) {
             <td>{props.music.author}</td>
 
             {/* music name */}
-            <td><a href={'/musics/details/' + props.music._id}>{props.music.name}</a></td>
+            <td className='info-name'><a href={'/musics/details/' + props.music._id}>{props.music.name}</a></td>
         </tr>
     )
 }

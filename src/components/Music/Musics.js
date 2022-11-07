@@ -62,17 +62,17 @@ export default function Musics(props) {
           <tr>
             <th>פעולות</th>
             {/* <th>ליווי</th> */}
-            <th>סגנון</th>
+            <th className='hide-mobile-info'>סגנון</th>
             {/* <th>משקל</th> */}
             {/* <th>Tempo</th> */}
             {/* <th>BPM</th> */}
             <th>סולם</th>
-            <th>נגינה ללא תווים</th>
-            <th>השלמת מנגינה</th>
+            <th className='hide-mobile-info'>נגינה ללא תווים</th>
+            <th className='hide-mobile-info'>השלמת מנגינה</th>
             {/* <th>מאסטרינג</th> */}
             {/* <th>נוצר מחדש</th> */}
             <th>מודפס</th>
-            <th>רמת קושי</th>
+            <th>רמה</th>
             <th>יוצר</th>
             <th>שם</th>
           </tr>
