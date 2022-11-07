@@ -92,6 +92,7 @@ export default function MusicDetails(props) {
             <h3>פרטי יצירה</h3>
 
             <h4>{music.name}</h4>
+            <h6>{music.author}</h6>
 
             {/* actions */}
             <div id='music-actions'>

@@ -74,3 +74,19 @@
     
 }
 
+@media only screen and (max-width: 600px) {
+
+    #newItems{
+        margin: 5px 0 !important;
+
+        .newLink{
+            margin-bottom: 5px !important;
+            padding: 5px 6px !important;
+
+            i{
+                margin-left: 0 !important;
+            }
+        }
+    }
+
+}

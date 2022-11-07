@@ -171,3 +171,12 @@
 }
 
 @-webkit-keyframes slide-in-left{0%{-webkit-transform:translateX(-1000px);transform:translateX(-1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}@keyframes slide-in-left{0%{-webkit-transform:translateX(-1000px);transform:translateX(-1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}
+
+@media only screen and (max-width: 600px) {
+    
+    i{
+        margin: 5px 10px !important;
+    }
+
+    
+  }

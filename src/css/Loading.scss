@@ -1,9 +1,3 @@
-// comment when loading page is ready !!
-// #topNav, 
-// #newItems{
-//     display: none !important;
-// }
-
 @import  url(https://fonts.googleapis.com/css?family=Montserrat);
 $width: 15px;
 $height: 15px;
@@ -187,3 +181,10 @@ svg.tea {
     }
   }
   
+  @media only screen and (max-width: 600px) {
+    
+    #loading-page{
+      padding: 0 !important;
+      margin-top: 50%;
+    }
+  }

@@ -13,10 +13,10 @@
     }
 
     .total-row {
-        display: flex;
 
         .total-div {
             margin: 20px auto;
+            display: inline-block;
 
             .amount {
                 margin: 0;
@@ -66,3 +66,21 @@
 
     }
 }
+
+
+@media only screen and (max-width: 600px) {
+    
+    .home-total{
+
+        width: max-content;
+        padding: 10px 20px;
+
+        .total-div{
+            margin: 10px !important;
+        }
+    }
+    
+    .lessons-list{
+        width: 350px !important;
+    }
+  }

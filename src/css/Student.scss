@@ -51,7 +51,27 @@
             }
         }
     }
-
-    
-    
 }
+
+@media only screen and (max-width: 600px) {
+    
+    a{
+        font-size: 10px;
+        margin: 0 !important;
+        display: inline;
+    }
+
+    .student-details{
+        font-size: 10px;
+        padding: 0 15px !important;
+    }
+
+    .student-actions{
+        padding: 0 !important;
+
+        .actionLink{
+            padding:5px 0 !important;
+            margin:  0 !important;
+        }
+    }
+  }
